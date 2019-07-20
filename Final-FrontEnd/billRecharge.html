@@ -1,0 +1,412 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+		integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>Bill Pay / Top Up</title>
+		<link rel="stylesheet" type="text/css" href="billRecharge.css">
+		<style>
+  body {
+    position: relative;
+  }
+  ul.nav-pills {
+    top: 20px;
+    position: sticky;
+		margin-top: 4px;
+  }
+  div.col-8 div {
+    height: 500px;
+			margin-top: 4px;
+  }
+  </style>
+	</head>
+
+	<body>  <!--Start of body-->
+
+	<!-- Header / Navigation Starts-->
+		<div class="container-fluid">
+
+			<nav class="navbar navbar-expand-sm bg-dark ">
+
+
+				<a class="navbar-brand" href="index.html">
+					<img class="logo-brand" src="images/logo.png" alt="VoizFonica" title="VoizFonica"/>
+				</a>
+
+				<button class="navbar-toggler navbar-dark" type="button" data-toggle="collapse" data-target="#main-navigation">
+					<span class="navbar-toggler-icon"></span>
+				</button>
+
+				<div class="collapse navbar-collapse nav-header-list" id="main-navigation">
+					<ul class="navbar-nav" style="color:#0076ff;">
+						<li class="nav-item">
+							<a class="nav-link headerFont" href="index.html" >Home</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link headerFont" href="billRecharge.html" >Bill Pay / Recharge</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link headerFont" href="eStore.html">e-Store</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link headerFont" href="plans.html">Plans</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link headerFont" href="MNP.html">MNP</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link headerFont" href="aboutus.html">About Us</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link headerFont" href="customerComplaint.html">Get Help</a>
+						</li>
+						<li class="nav-item d-block d-sm-none">
+							<a href="loginPage.html">
+							<button type="button" class="btn btn-primary" style="padding:2px;magin-top:2px;" href="loginPage.html">
+							Sign In
+							
+							</button></a>&nbsp;/&nbsp;
+							<a href="customerRegister.html">
+							<button type="button" class="btn btn-primary" style="padding:2px;magin-top:2px;"href="customerRegister.html">
+							Sign Up</button>
+							</a>
+						</li>
+					</ul>
+				</div>
+
+				<a class="navbar-brand d-none d-sm-block" href="customerRegister.html">
+					<img class="login-brand" src="images/login_icon.jpg" alt="Login/SignUP" title="Login/SignUP"/>
+				</a>
+
+			</nav>
+
+		</div>
+
+	<!-- Header / Navigation Ends -->
+
+	<!--Trial starts here -->
+		<div class="container-fluid">
+  		<div class="row">
+    		<nav class="col-sm-3 col-4" id="myScrollspy">
+      		<ul class="nav nav-pills flex-column">
+        		<li class="nav-item">
+          		<a class="nav-link active" id="postPaid" href="#postPaid-div">Post Paid</a>
+        		</li>
+        		<li class="nav-item">
+          		<a class="nav-link"id="dongle" href="#dongle-div">Dongle</a>
+        		</li>
+						<li class="nav-item">
+          		<a class="nav-link"id="topUp" href="#topUp-div">Top Up</a>
+        		</li>
+					</ul>
+				</nav>
+
+				<div class="col-sm-9 col-8">
+      		<div id="postPaid-div" class="bg-default">
+					<!--table start here-->
+
+						<table id="postPaid-table" class="table table-striped" style="width:100%;padding-left:15px;padding-right:15px;">
+
+							<thead>
+								<tr>
+
+									<th style="text-align:center;color:white;background:#0076ff;border-top-left-radius:5px;cursor:pointer;" id="PostPaid-bill">
+										Bill Pay
+									</th>
+									<th style="text-align:center;color:#0076ff;background:#ffffff;border-top-right-radius:5px;cursor:pointer;" id="PostPaid-Plan">
+										Plan
+									</th>
+								</tr>
+							</thead>
+					<!-- PostPaid Bill Details start here -->
+
+							<tbody id="PostPaid-billDetails">
+								<tr>
+									<td>Account Number</td>
+									<td>785458574634</td>
+								</tr>
+								<tr>
+									<td>Current Plan</td>
+									<td>The Prestige</td>
+								</tr>
+								<tr>
+									<td>Due Amount</td>
+									<td>500 INR</td>
+								</tr>
+								<tr>
+									<td>Due Date</td>
+									<td>15/09/2019</td>
+								</tr>
+							</tbody>
+
+							<tfoot id="PostPaid-makePayment">
+								<tr>
+									<td> <button type="button" class="btn btn-primary">Make Payment</button>
+									</td>
+								</tr>
+							</tfoot>
+
+					<!--PostPaid bill Details end here -->
+
+					<!-- PostPaid Plan Details start here -->
+
+							<tbody id="PostPaid-planDetails">
+								<tr>
+									<td>Account Number</td>
+									<td>785458574634</td>
+								</tr>
+								<tr>
+									<td>Plan</td>
+									<td>The Prestige</td>
+								</tr>
+								<tr>
+									<td>Data Limit</td>
+									<td>1000 GB</td>
+								</tr>
+								<tr>
+									<td>Speed</td>
+									<td>150 Mbps</td>
+								</tr>
+							</tbody>
+					<!--PostPaid Plan Details end here -->
+
+						</table>
+					<!-- table end here -->
+
+      		</div>
+      		<div id="dongle-div" class="bg-default">
+						<table id="dongle-table" class="table table-striped" style="width:100%" >
+							<thead>
+								<tr>
+									<th style="text-align:center;color:white;background:#0076ff;border-top-left-radius:5px;cursor:pointer;" id="dongle-bill">
+										BillPay
+									</th>
+									<th style="text-align:center;color:#0076ff;background:#ffffff;border-top-right-radius:5px;cursor:pointer;" id="dongle-plan">
+										Plan Details
+									</th>
+								</tr>
+							</thead>
+						<!-- PostPaid Bill Details start here -->
+
+							<tbody id="dongle-billDetails">
+								<tr>
+									<td>Account Number</td>
+									<td>785458574634</td>
+								</tr>
+								<tr>
+									<td>Current Plan</td>
+									<td>The Prestige</td>
+								</tr>
+								<tr>
+									<td>Due Amount</td>
+									<td>500 INR</td>
+								</tr>
+								<tr>
+									<td>Due Date</td>
+									<td>15/09/2019</td>
+								</tr>
+							</tbody>
+
+							<tfoot id="dongle-makePayment">
+								<tr>
+									<td>
+										<button type="button" class="btn btn-primary">Make Payment</button>
+									</td>
+								</tr>
+							</tfoot>
+
+						<!--PostPaid bill Details end here -->
+
+						<!-- PostPaid Plan Details start here -->
+
+							<tbody id="dongle-planDetails">
+								<tr>
+									<td>Account Number</td>
+									<td>785458574634</td>
+								</tr>
+								<tr>
+									<td>Plan</td>
+									<td>The Prestige</td>
+								</tr>
+								<tr>
+									<td>Data Limit</td>
+									<td>1000 GB</td>
+								</tr>
+								<tr>
+									<td>Speed</td>
+									<td>150 Mbps</td>
+								</tr>
+							</tbody>
+						<!--PostPaid Plan Details end here -->
+
+						</table>
+      		</div>
+
+					<!---------------------- Top Up Details start here ------------------------------>
+
+					<div id="topUp-div" class="bg-default">
+
+						<table id="topUp-table" class="table table-striped" style="width:100%;">
+							<thead>
+								<tr>
+									<th style="text-align:center;color:white;background:#0076ff;border-top-left-radius:5px;cursor:pointer;" id="topUp-postPaid">
+										Post Paid
+									</th>
+									<th style="text-align:center;color:#0076ff;background:#ffffff;border-top-right-radius:5px;cursor:pointer;" id="topUp-dongle">
+										Dongle
+									</th>
+								</tr>
+							</thead>
+
+							<tbody id="topUp-postPaidPlans">
+								<tr>
+									<td>INR 100<br/>
+										<span class="badge badge-primary">Val:3 days</span><br/>
+										<span class="badge badge-primary">Data:10 GB</span>
+									</td>
+									<td>
+										<button type="button" class="btn btn-outline-primary">TopUp</button>
+									</td>
+								</tr>
+								<tr>
+									<td>INR 200<br/>
+										<span class="badge badge-primary">Val:5 days</span><br>
+										<span class="badge badge-primary">Data:15 GB</span>
+									</td>
+									<td>
+										<button type="button" class="btn btn-outline-primary">TopUp</button>
+									</td>
+								</tr>
+								<tr>
+									<td>INR300<br/>
+										<span class="badge badge-primary">Val:7 days</span><br>
+										<span class="badge badge-primary">Data:20 GB</span>
+									</td>
+									<td>
+										<button type="button" class="btn btn-outline-primary">TopUp</button>
+									</td>
+								</tr>
+								<tr>
+									<td>INR 400<br/>
+										<span class="badge badge-primary">Val:10 days</span><br>
+										<span class="badge badge-primary">Data:30 GB</span>
+									</td>
+									<td>
+										<button type="button" class="btn btn-outline-primary">TopUp</button>
+									</td>
+								</tr>
+							</tbody>
+
+							<tbody id="topUp-donglePlans">
+								<tr>
+									<td>INR 100 DG<br/>
+										<span class="badge badge-primary">Val:3 days</span><br/>
+										<span class="badge badge-primary">Data:10 GB</span>
+									</td>
+									<td>
+										<button type="button" class="btn btn-outline-primary">TopUp</button>
+									</td>
+								</tr>
+								<tr>
+									<td>INR 200 DG<br/>
+										<span class="badge badge-primary">Val:5 days</span><br>
+										<span class="badge badge-primary">Data:15 GB</span>
+									</td>
+									<td>
+										<button type="button" class="btn btn-outline-primary">TopUp</button>
+									</td>
+								</tr>
+								<tr>
+									<td>INR 300 DG<br/>
+										<span class="badge badge-primary">Val:7 days</span><br>
+										<span class="badge badge-primary">Data:20 GB</span>
+									</td>
+									<td>
+										<button type="button" class="btn btn-outline-primary">TopUp</button>
+									</td>
+								</tr>
+								<tr>
+									<td>INR 400 DG<br/>
+										<span class="badge badge-primary">Val:10 days</span><br>
+										<span class="badge badge-primary">Data:30 GB</span>
+									</td>
+									<td>
+										<button type="button" class="btn btn-outline-primary">TopUp</button>
+									</td>
+								</tr>
+							</tbody>
+
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
+	<!--Trial ends here -->
+
+
+
+	<!-- Footer starts -->
+	<footer class="page-footer">
+		<div class="container">
+
+
+<ul class="nav justify-content-center">
+  <li class="nav-item">
+    <a class="nav-link active" href="investors.html">Investors</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="careers.html">Careers</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="Ppolicy.html">Privacy Policy</a>
+  </li>
+    <li class="nav-item">
+    <a class="nav-link" href="business.html">Business</a>
+  </li>
+    <li class="nav-item">
+    <a class="nav-link" href="contact.html">Contact Us</a>
+  </li>
+  </ul>
+		</div>
+
+		<div class="container">
+		<br>
+
+
+<ul class="nav justify-content-center">
+  <li class="nav-item">
+    <a href="https://www.twitter.com/"><img id="footer-image" src = "images/twitter_icon.jpg"> </a>
+  </li>
+  <li class="nav-item">
+   <a href="https://www.instagram.com/"> <img id="footer-image" src = "images/instagram_icon.jpg" ></a>
+  </li>
+  <li class="nav-item">
+    <a href="https://www.facebook.com/"> <img id="footer-image" src = "images/facebook_icon.png"> </a>
+  </li>
+    <li class="nav-item">
+  <a href="https://www.youtube.com/">  <img id="footer-image" src = "images/youtube_icon.png" > </a>
+  </li>
+    <li class="nav-item">
+    <a href="https://www.linkedin.com/"> <img id="footer-image" src = "images/link_icon.png" href="#"></a>
+  </li>
+  </ul
+		<br>
+		<hr>
+		<div class="footer-copyright text-center">© 2019 VoizFonica. All Rights Reserved </div>
+	</footer>
+
+
+
+
+
+
+	<!-- CDN's of js and jquery -->
+	 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+		<script type="text/javascript" src="billRecharge.js"></script>
+	</body> <!--End of body -->
+
+</html>
