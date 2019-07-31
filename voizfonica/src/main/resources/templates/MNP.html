@@ -80,7 +80,7 @@
             <div class="form-group">
                 <label class="control-label col-sm-6" for="mobNumber">Mobile Number</label>
                 <div class="col-sm-10">
-                    <input class = "form-control" autofocus required type="text"  id="mobNumber" placeholder="Enter your Mobile No." maxlength="10" th:field="*{mobNumber}">
+                    <input class = "form-control numbers" autofocus required type="number"  id="mobNumber" placeholder="Enter your Mobile No." maxlength="10" th:field="*{mobNumber}">
                     <span class="badge badge-danger"
                           th:if="${#fields.hasErrors('mobNumber')}" th:errors="*{mobNumber}">Enter a valid number</span>
                 </div>
