@@ -1,6 +1,6 @@
-package com.payment.validcheck.Data;
+package com.example.voizfonica.data;
 
-import com.payment.validcheck.Payment;
+import com.example.voizfonica.model.Payment;
 import org.springframework.data.mongodb.repository.MongoRepository;
 
 public interface PaymentRepository extends MongoRepository<Payment,String>{
