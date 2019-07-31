@@ -9,12 +9,13 @@
             rel="stylesheet"
             href="https://use.fontawesome.com/releases/v5.3.1/css/all.css"
             integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
-    <title>Register | VoizFonica</title>
-    <link rel="stylesheet" type="text/css" th:href="@{/css/customerRegister.css}">
+    <title>Login | VoizFonica</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/login.css}">
 </head>
 
-
 <body> <!--Start of body-->
+
+
 <!-- Header / Navigation Starts-->
 <b>
     <div class="container-fluid">
@@ -23,7 +24,7 @@
 
 
             <a class="navbar-brand" href="index">
-                <img class="logo-brand" src="images/logo.png" alt="VoizFonica" title="VoizFonica"/>
+                <img class="logo-brand" src="images/Logo.png" alt="VoizFonica" title="VoizFonica"/>
             </a>
 
             <button class="navbar-toggler navbar-dark" type="button" data-toggle="collapse" data-target="#main-navigation">
@@ -72,121 +73,64 @@
         </nav>
     </div>
 </b>
-
 <!--Header / Navigation ends here -->
+<!-- Header / Navigation Ends -->
+<body>
+<div class="container">
+    <div class="d-flex justify-content-center h-100">
+        <div class="card">
+            <div class="card-header">
+                <h2 align = "center"><b> Welcome!  </b> </h2>
+                <br>
 
 
-<!-- Register / Navigation Starts -->
-<br><br><br>
+            </div>
+            <div class="card-body">
+                <form method="post"  th:object="${login}">
+                    <div>
+                        <span class="badge badge-danger" th:if="@{#fields.hasErrors(emailId)}" th:errors="*{emailId}">Errors</span>
+                    </div>
+                    <div class="input-group form-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="fas fa-user"></i></span>
+                        </div>
+                        <input required type="email" class="form-control" placeholder="Email" th:field="*{emailId}"/>
+                    </div>
+
+                    <div>
+                        <span class="badge badge-danger" th:if="@{#fields.hasErrors(password)}" th:errors="*{password}">Errors</span>
+                    </div>
+
+                    <div class="input-group form-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="fas fa-key"></i></span>
+                        </div>
+                        <input required type="password" class="form-control" placeholder="Password" th:field="*{password}"/>
+                    </div>
+
+                    <div th:objec="${passErrors}">
+                        <span th:text="${errorMessage}">
+                            Message
+                        </span>
+                    </div>
+
+
+                    <div class="form-group">
+                        <input type="submit" align = "center" value="Login" class="btn float-right login_btn">
+                    </div>
+                </form>
+            </div>
+
+        </div>
+    </div>
+</div>
+<!-- Footer -->
 <b>
-    <div class="card-header">
-        <h4 align = "center"><font color = "white">Register to join the earth's mightiest telecom </font>  	 </h4>
 
-    </div>
-
-    <div class="card-body" >
-
-
-        <form method="post" th:object="${userCredential}" >
-            <div>
-                <span class="badge badge-danger" th:if="@{#fields.hasErrors(userName)}" th:errors="*{userName}">Errors</span>
-            </div>
-            <div class="formstyle">
-
-                <label>User name</label>
-                <input class="container-fluid-block col-12 col-sm-12 col-md-7" autofocus required type="text" placeholder="User name" th:field="*{userName}"/>
-            </div>
-
-            <div>
-                <span class="badge badge-danger" th:if="@{#fields.hasErrors(emailId)}" th:errors="*{emailId}">Errors</span>
-            </div>
-            <div class="formstyle">
-                <label for="emailAddress">Email Address</label>
-                <input class="container-fluid-block col-12 col-sm-12 col-md-7" th:field="*{emailId}"required placeholder="Email Address" id="emailAddress" type="email" >
-            </div>
-
-            <div>
-                <span class="badge badge-danger" th:if="@{#fields.hasErrors(password)}"
-                      th:errors="*{password}">Errors</span>
-            </div>
-            <div class="formstyle" >
-                <label>Password</label>
-                <input class="container-fluid-block col-12 col-sm-12 col-md-7" th:field="*{password}"
-                       required placeholder="Password" id="password" type="password" onkeyup="check();"/>
-            </div>
-
-            <span class="badge badge-warning" id="showNotMatch"></span>
-
-            <div class="formstyle" >
-                <label>Confirm Password</label>
-
-                <input class="container-fluid-block col-12 col-sm-12 col-md-7 " required type="password"
-                       placeholder="Confirm Password"
-                       name="confirm_password" id="confirm_password" onkeyup="check();"/>
-            </div>
-            <div>
-                <span class="badge badge-danger" th:if="@{#fields.hasErrors(contactNumber)}" th:errors="*{contactNumber}">Errors</span>
-            </div>
-            <div class="formstyle" >
-                <label>Contact number</label>
-                <input class="container-fluid-block col-12 col-sm-12 col-md-7 numbers"
-                       required  th:field="*{contactNumber}" placeholder="Contact number" id="contactNumber" type="number" />
-            </div>
-
-            <div>
-                <span class="badge badge-danger" th:if="@{#fields.hasErrors(panNumber)}" th:errors="*{panNumber}">Errors</span>
-            </div>
-            <div class="formstyle" >
-                <label>Pan number</label>
-                <input class="container-fluid-block col-12 col-sm-12 col-md-7" th:field="*{panNumber}" required  placeholder="Pan number" id="panNumber" type="text"  />
-            </div>
-            <div>
-                <span class="badge badge-danger" th:if="@{#fields.hasErrors(aadharNumber)}" th:errors="*{aadharNumber}">Errors</span>
-            </div>
-            <div class="formstyle" >
-                <label>Aadhar number</label>
-                <input class="container-fluid-block col-12 col-sm-12 col-md-7 numbers" required  th:field="*{aadharNumber}" placeholder="Aadhar number" id="aadharNumber" type="number"/>
-            </div>
-
-            <div>
-                <span class="badge badge-danger" th:if="@{#fields.hasErrors(requiredPlan)}" th:errors="*{requiredPlan}">Errors</span>
-            </div>
-
-            <div class="formstyle" >
-                <label for="plan">Required Plan</label>
-                <select  required name="plan" id="plan" th:field="*{requiredPlan}" style="width:200px; background-color:linen;">
-                    <option value="-1">Please select</option>
-                    <option value="1">Prepaid</option>
-                    <option value="2">Postpaid</option>
-                    <option value="3">Dongle</option>
-                </select>
-            </div>
-
-            <div>
-                <span class="badge badge-danger" th:if="@{#fields.hasErrors(address)}" th:errors="*{address}">Errors</span>
-            </div>
-            <div class="formstyle" >
-                <label>Address</label>
-                <textarea class="container-fluid-block col-12 col-sm-12 col-md-7" th:field="*{address}"required   cols="40" rows="3" ></textarea>
-            </div>
-
-            <div class="formstyle">
-                <input type="submit" align = "center" value="Register" class="btn float login_btn">
-            </div>
-
-        </form>
-        <br><br>
-
-    </div>
-
-
-    <!-- Register / Navigation Ends -->
-
-
-    <!-- Footer starts --><b>
     <footer class="page-footer">
-
         <div class="container">
+
+
             <ul class="nav justify-content-center">
                 <li class="nav-item">
                     <a class="nav-link active" href="investors">Investors</a>
@@ -209,6 +153,7 @@
         <div class="container">
             <br>
 
+
             <ul class="nav justify-content-center">
                 <li class="nav-item">
                     <a href="https://www.twitter.com/"><img id="footer-image" src = "images/twitter_icon.jpg"> </a>
@@ -229,12 +174,7 @@
             <br>
             <hr>
             <div class="footer-copyright text-center">© 2019 VoizFonica. All Rights Reserved </div>
-        </div>
-
-    </footer></b>
-
-
-
+    </footer>
 
 
 
@@ -243,7 +183,6 @@
             integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
             integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-    <script type="text/javascript" th:src="@{/js/customerRegister.js}"></script>
- </body> <!--End of body -->
+</body> <!--End of body -->
 
 </html>

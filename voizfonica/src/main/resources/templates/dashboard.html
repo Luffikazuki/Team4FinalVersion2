@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <title>User Dashboard | VoizFonica </title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/dashboardStyle.css}">
+</head>
+<body>
+<nav class="navbar navbar-inverse visible-xs">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#"></a>
+        </div>
+        <div class="collapse navbar-collapse" id="myNavbar">
+            <ul class="nav navbar-nav">
+                <li class="active"><a href="#">Dashboard</a></li>
+                <li><a href="profile.html">Profile</a></li>
+                <li><a href="unsubscribe.html">Unsubsricbe</a></li>
+                <li><a href="index.html">Logout</a></li>
+
+            </ul>
+        </div>
+    </div>
+</nav>
+<br><br>
+<div class="container-fluid">
+    <div class="row content">
+        <div class="col-sm-3 sidenav hidden-xs">
+            <br>
+            <img src = "images/logo-small.png" height = "150px" width = "150px" > <br><br>
+            <ul class="nav nav-pills nav-stacked">
+                <li class="active"><a href="#">Dashboard</a></li>
+                <li><a href="profile.html">Profile</a></li>
+                <li><a href="unsubscribe.html">Unsubsricbe</a></li>
+                <li><a href="index.html">Logout</a></li>
+
+            </ul>
+        </div>
+
+
+        <div class="col-sm-8">
+            <div class="well">
+                <h4><b>Hi User! </b></h4>
+                <p>Welcome to your dashboard</p>
+                <hr class="my-4">
+                <div class="col-sm-18">
+
+                    <a href = "billRecharge.html"><p><button type="button" class="btn btn-primary">
+                        Pay your bill
+                    </button></p> </a>
+                    <hr class="my-4">
+                </div>
+                <div class="row">
+                    <div class="col-sm-4">
+                        <div class="well">
+                            <h4 align= 'center'> <b> Balance </b> </h4><br>
+                            <div class="progress green">
+                <span class="progress-left">
+                    <span class="progress-bar"></span>
+                </span>
+                                <span class="progress-right">
+                    <span class="progress-bar"></span>
+                </span>
+                                <div class="progress-value">425.20 </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="well">
+                            <h4 align= 'center'> <b> Validity </b> </h4><br>
+                            <div class="progress yellow">
+                <span class="progress-left">
+                    <span class="progress-bar"></span>
+                </span>
+                                <span class="progress-right">
+                    <span class="progress-bar"></span>
+                </span>
+                                <div class="progress-value">20 days </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-4">
+                        <div class="well">
+                            <h4 align= 'center'> <b> Data Left </b></h4><br>
+                            <div class="progress blue">
+                <span class="progress-left">
+                    <span class="progress-bar"></span>
+                </span>
+                                <span class="progress-right">
+                    <span class="progress-bar"></span>
+                </span>
+                                <div class="progress-value">940 MB</div>
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-12">
+                        <div class="well">
+                            <h4><b> Current Plan: </b></h4>
+                            <p> You are currently in this plan </p>
+                            <ul>
+                                <li> 1 GB Data per day </li>
+                                <li> Unlimited Calls </li>
+                                <li> 100 free SMS </li>
+                                <li> Validity of 28 days </li>
+                            </ul>
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+
+</body>
+</html>

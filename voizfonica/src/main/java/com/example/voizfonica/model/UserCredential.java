@@ -43,5 +43,13 @@ public class UserCredential {
 
     @Pattern(regexp = "^([1-9]){1}([0-9]){9}$")
     private String contactNumber;
+
+    public String getEmailId() {
+        return emailId;
+    }
+
+    public String getPassword() {
+        return password;
+    }
 }
 
