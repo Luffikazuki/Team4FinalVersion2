@@ -5,6 +5,6 @@ var check = function() {
         document.getElementById('showNotMatch').innerHTML = 'Passwords match';
     } else {
         document.getElementById('showNotMatch').style.color = 'red';
-        document.getElementById('showNotMatch').innerHTML = 'Passwords do not matcht';
+        document.getElementById('showNotMatch').innerHTML = 'Passwords do not match';
     }
 }
