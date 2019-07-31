@@ -1,7 +1,9 @@
-package com.payment.validcheck.Controller;
+package com.example.voizfonica.controller;
 
-import com.payment.validcheck.Data.PaymentRepository;
-import com.payment.validcheck.Payment;
+
+
+import com.example.voizfonica.data.PaymentRepository;
+import com.example.voizfonica.model.Payment;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -48,21 +50,6 @@ public class PaymentController {
     }
 }
 
-/*
 
-    @PostMapping("/")
-    public String handlePostRequest(@Valid Payment payment, BindingResult bindingResult) {
-        if (bindingResult.hasErrors()) {
-            return "payment";
-        }
-    return "successpage";
-    }
-
-    @GetMapping("/")
-    public String handleGetRequest(Payment payment) {
-
-        return "payment";
-    }
-*/
 
 
