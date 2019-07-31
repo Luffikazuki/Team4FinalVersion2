@@ -22,10 +22,10 @@ public class UserCredential {
     @Size(min=8,max=25)
     private String password;
 
-    @Email
+    @Pattern(regexp = "^([a-zA-Z0-9_\\-\\.]+)@([a-zA-Z0-9_\\.\\-]+)\\.([a-zA-Z]{2,5})$")
     private String emailId;
 
-    @Size(max=12)
+    @Pattern(regexp = "^([0-9]){12}$")
     private String aadharNumber;
 
     @NotNull
@@ -41,7 +41,7 @@ public class UserCredential {
     private String address;
 
 
-    @Digits(integer = 10,fraction = 0, message = "Must of size 10 numbers")
-    private long contactNumber;
+    @Pattern(regexp = "^([1-9]){1}([0-9]){9}$")
+    private String contactNumber;
 }
 

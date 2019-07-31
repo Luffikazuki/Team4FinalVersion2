@@ -101,7 +101,7 @@ label{
 
 }
 html,body{
-    background-image: url('images/login.jpg');
+    background-image: url('../images/login.jpg');
     background-size: cover;
     background-repeat: no-repeat;
 
@@ -135,6 +135,12 @@ form {
     background-color: black;
 }
 
+/*For removing in number type*/
+.numbers::-webkit-inner-spin-button,
+.numbers::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
 
 
 /* Register section styles ends here */

@@ -23,15 +23,15 @@ public class UserRegistrationController {
         this.userCredentialRepository = userCredentialRepository;
     }
 
-    @ModelAttribute(name = "register")
-    public UserCredential register(){
+    @ModelAttribute(name = "userCredentials")
+    public UserCredential userCredential(){
         return new UserCredential();
     }
 
     @GetMapping
     public String showRegistrationForm(Model model){
-        UserCredential userCredentials = new UserCredential();
-        model.addAttribute("userCredentials",userCredentials);
+        UserCredential userCredential = new UserCredential();
+        model.addAttribute("userCredential",userCredential);
         return "customerRegister";
     }
 
