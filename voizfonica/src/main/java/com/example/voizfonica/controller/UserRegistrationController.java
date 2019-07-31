@@ -42,7 +42,7 @@ public class UserRegistrationController {
         }else{
             userCredentialRepository.save(userCredential);
             model.addAttribute("showDetails",userCredential);
-            return "redirect:/customerRegister/Successful";
+            return "redirect:/customerRegister";
         }
     }
 
