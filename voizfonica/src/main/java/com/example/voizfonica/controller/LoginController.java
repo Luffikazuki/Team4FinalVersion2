@@ -28,6 +28,7 @@ public class LoginController {
 
     @GetMapping
     public String showLogin(Model model) {
+
         model.addAttribute("login", new Login());
         return "loginPage";
     }

@@ -15,7 +15,6 @@ import org.springframework.data.mongodb.core.mapping.Document;
 public class PostPaid {
     @Id
     private final String id;
-    private final String planMoney;
     private final String validity;
     private final String benefits;
 }

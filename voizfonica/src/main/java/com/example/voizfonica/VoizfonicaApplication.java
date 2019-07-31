@@ -17,8 +17,11 @@ public class VoizfonicaApplication {
 
     @Bean
     public CommandLineRunner planLoader(PostPaidPlanRepository repo) {
+        repo.deleteAll();
         return args -> {
-            repo.save(new PostPaid("3G/4G[1.5GB/DAY]","199INR","Monthly Plan","25 GB"));
+            repo.save(new PostPaid("199INR","Monthly Plan","25 GB"));
+            repo.save(new PostPaid("500INR","Monthly Plan","205 GB"));
+            repo.save(new PostPaid("1500INR","Monthly Plan","1000 GB"));
 
         };
     }

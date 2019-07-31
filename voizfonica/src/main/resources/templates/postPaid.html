@@ -89,7 +89,7 @@
     <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
       <div style="overflow-x:auto;"class="card-body" >
 	  
-
+<form method="POST" th:object="${postpaid}" >
 <table  id="table" class="table table-striped"  style="border-color:#0076ff;">
      <thead>
 	   <tr>
@@ -105,23 +105,30 @@
             <td>199 INR</td>
             <td>bill cycle</td>
             <td>25 GB</td>
-			<td><input type="submit" id="tst" value="Recharge" onclick="fnselect()" class="btn btn-primary" /></td>
+			<td><input type="submit"  value="Recharge" onclick="fnselect()" class="btn btn-primary" /></td>
         </tr>
         <tr>
             <td>599 INR</td>
             <td>bill cycle</td>
             <td>205 GB</td>
-			<td><input type="submit" id="tst" value="Recharge" onclick="fnselect()" class="btn btn-primary" /></td>
+			<td><input type="submit"  value="Recharge" onclick="fnselect()" class="btn btn-primary" /></td>
         </tr>
         <tr>
             <td>1500 INR</td>
             <td>bill cycle</td>
             <td>1000 GB</td>
-			<td><input type="submit" id="tst" value="Recharge" onclick="fnselect()" class="btn btn-primary" /></td>
+			<td><input type="submit"  value="Recharge" onclick="fnselect()" class="btn btn-primary" /></td>
         </tr>
+
+       <tr th:each="postpaid :${Postpaid_plans}">
+            <td th:value="${postpaid.id}"></td>
+           <td th:value="${postpaid.validity}"></td>
+           <td th:value="${postpaid.benefits}"></td>
+           <td><input type="submit" id="tst" value="Recharge" onclick="fnselect()" class="btn btn-primary" /></td>
+       </tr>
 		</tbody>
     </table>
-   
+</form>
         </div>
     </div>
   </div>
