@@ -1,4 +1,4 @@
-package com.payment.validcheck;
+package com.example.voizfonica.model;
 
 import lombok.Data;
 import org.hibernate.validator.constraints.CreditCardNumber;
