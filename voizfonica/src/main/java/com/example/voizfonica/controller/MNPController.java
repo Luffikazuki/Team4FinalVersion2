@@ -42,11 +42,9 @@ public class MNPController {
 
     @PostMapping
     public String processRegistrationFrom(@Valid MNPDomain mnpdomain, Errors errors, Model model) {
-
-
             mnprepository.save(mnpdomain);
             //model.addAttribute("showDetails", mnpdomain);
-            return "redirect:/MNP";
+        return "MNPSuccess";
         }
     }
 
