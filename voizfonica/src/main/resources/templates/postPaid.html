@@ -87,9 +87,9 @@
     </div>
 
     <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
-      <div style="overflow-x:auto;"class="card-body" >
+      <div style="overflow-x:auto;" class="card-body" >
 	  
-<form method="POST" th:object="${postpaid}" >
+<form method="post" >
 <table  id="table" class="table table-striped"  style="border-color:#0076ff;">
      <thead>
 	   <tr>
@@ -101,30 +101,13 @@
 	   </tr>
 	   </thead>
 	   <tbody>
-		<tr>
-            <td>199 INR</td>
-            <td>bill cycle</td>
-            <td>25 GB</td>
-			<td><input type="submit"  value="Recharge" onclick="fnselect()" class="btn btn-primary" /></td>
-        </tr>
-        <tr>
-            <td>599 INR</td>
-            <td>bill cycle</td>
-            <td>205 GB</td>
-			<td><input type="submit"  value="Recharge" onclick="fnselect()" class="btn btn-primary" /></td>
-        </tr>
-        <tr>
-            <td>1500 INR</td>
-            <td>bill cycle</td>
-            <td>1000 GB</td>
-			<td><input type="submit"  value="Recharge" onclick="fnselect()" class="btn btn-primary" /></td>
-        </tr>
 
-       <tr th:each="postpaid :${Postpaid_plans}">
-            <td th:value="${postpaid.id}"></td>
-           <td th:value="${postpaid.validity}"></td>
-           <td th:value="${postpaid.benefits}"></td>
-           <td><input type="submit" id="tst" value="Recharge" onclick="fnselect()" class="btn btn-primary" /></td>
+       <tr th:each="pp :${postPlans}">
+            <td th:text="${pp.postMoney}">100INR</td>
+           <td th:text="${pp.validity}">Monthly Plan</td>
+           <td th:text="${pp.benefits}">25GB</td>
+           <td>
+               <input type="submit" id="tst" value="Recharge"  class="btn btn-primary" /></td>
        </tr>
 		</tbody>
     </table>
@@ -132,35 +115,8 @@
         </div>
     </div>
   </div>
-  <div class="card">
-    <div class="card-header" id="headingTwo">
-      <h2 class="mb-0">
-        <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo" style="color:white;text-decoration: none;">
-         
-        </button>
-      </h2>
-    </div>
-    <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
-      <div class="card-body">
-	  
-        </div>
-    </div>
-  </div>
-  <div class="card">
-    <div class="card-header" id="headingThree">
-      <h2 class="mb-0">
-        <button class="btn btn-link btn primary" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree" >
-          
-        </button>
-      </h2>
-    </div>
-    <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
-      <div class="card-body">
-          
-          
-       </div>
-    </div>
-  </div>
+
+
             </div></section>
 	<!-- postpaid / Navigation Ends -->
         

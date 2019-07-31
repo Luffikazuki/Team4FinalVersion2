@@ -95,7 +95,7 @@ margin-right:100px;
             width:500px;
             border-style:groove;
             border-radius:10px;
-            padding-bottom: 20px;
+
             margin-top:25px;
 }
 center{
@@ -115,7 +115,7 @@ input[type=submit] {
 	background-color: #000000;
 	width:100%;
 	padding: 20px 0 40px;
-	
+	position: marker;
     left: 0;
     bottom: 0;
 }
