@@ -84,6 +84,15 @@
 /* Header section styles end here */
 /* Style for MNP */
 
+
+/*For removing in number type*/
+.numbers::-webkit-inner-spin-button,
+.numbers::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+
 .formstyle{
     border: 10px solid #0076ff;
     padding: 50px;
