@@ -45,7 +45,7 @@ public class CustomerComplaintController {
         }else{
             complaintrepository.save(complaint);
             // model.addAttribute("showDetails",userCredentials);
-            return "redirect:/customerComplaint";
+            return "ComplaintSubmit";
         }
 
     }
