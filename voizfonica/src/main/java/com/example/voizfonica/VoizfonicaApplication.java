@@ -1,6 +1,7 @@
 package com.example.voizfonica;
 
-
+import com.example.voizfonica.data.DongleRepository;
+import com.example.voizfonica.model.DongleDomain;
 import com.example.voizfonica.data.PostPaidPlanRepository;
 import com.example.voizfonica.model.PostPaid;
 import org.springframework.boot.SpringApplication;
@@ -29,5 +30,22 @@ public class VoizfonicaApplication {
 
         };
     }
+    
+    @Bean
+    public CommandLineRunner dongleLoader(DongleRepository dongleRepo) {
+        dongleRepo.deleteAll();
+        return args -> {
+            dongleRepo.save(new DongleDomain("199INR", "28 Days", "10 GB", "3G"));
+            dongleRepo.save(new DongleDomain("250INR", "28 Days", "25 GB", "3G"));
+            dongleRepo.save(new DongleDomain("500INR", "48 Days", "100 GB", "3G"));
+            dongleRepo.save(new DongleDomain("1250INR", "96 Days", "250 GB", "3G"));
+            dongleRepo.save(new DongleDomain("99INR", "28 Days", "205 GB", "4G"));
+            dongleRepo.save(new DongleDomain("299INR", "28 Days", "1000 GB", "4G"));
+            dongleRepo.save(new DongleDomain("505INR", "48 Days", "205 GB", "4G"));
+            dongleRepo.save(new DongleDomain("1520INR", "96 Days", "1000 GB", "4G"));
+
+        };
+    }
+    
     }
 
