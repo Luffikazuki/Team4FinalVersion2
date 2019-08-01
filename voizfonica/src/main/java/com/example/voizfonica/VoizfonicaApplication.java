@@ -1,6 +1,8 @@
 package com.example.voizfonica;
 
+import com.example.voizfonica.data.DongleRepository;
 import com.example.voizfonica.data.PostPaidPlanRepository;
+import com.example.voizfonica.model.DongleDomain;
 import com.example.voizfonica.model.PostPaid;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -16,13 +18,15 @@ public class VoizfonicaApplication {
     }
 
     @Bean
-    public CommandLineRunner planLoader(PostPaidPlanRepository repo) {
-        repo.deleteAll();
+    public CommandLineRunner dongleLoader(DongleRepository dongleRepo) {
+        dongleRepo.deleteAll();
         return args -> {
-            repo.save(new PostPaid("199INR","Monthly Plan","25 GB"));
-            repo.save(new PostPaid("500INR","Monthly Plan","205 GB"));
-            repo.save(new PostPaid("1500INR","Monthly Plan","1000 GB"));
+            dongleRepo.save(new DongleDomain("199INR","Monthly Plan","10 GB"));
+            dongleRepo.save(new DongleDomain("250INR","Monthly Plan","25 GB"));
+            dongleRepo.save(new DongleDomain("505INR","Monthly Plan","205 GB"));
+            dongleRepo.save(new DongleDomain("1520INR","Monthly Plan","1000 GB"));
 
         };
     }
-}
+    }
+
