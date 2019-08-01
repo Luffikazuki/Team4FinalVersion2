@@ -16,7 +16,7 @@ import javax.validation.Valid;
 import java.util.List;
 
 @Controller
-@RequestMapping("/loginPage")
+@RequestMapping("/login")
 
 public class LoginController {
     private UserCredentialRepository userCredentialRepository;
@@ -28,7 +28,6 @@ public class LoginController {
 
     @GetMapping
     public String showLogin(Model model) {
-
         model.addAttribute("login", new Login());
         return "loginPage";
     }
