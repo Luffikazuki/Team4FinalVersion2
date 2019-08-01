@@ -12,8 +12,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.validation.Valid;
-import java.util.ArrayList;
+
 import java.util.List;
+
 
 
 @Controller
@@ -33,17 +34,18 @@ public class PostPaidController {
     }
     @GetMapping
     public String postPlanFunc(Model model) {
+        List<PostPaid> THREEG=postRepo.findByType("THREEG");
+        List<PostPaid> FOURG=postRepo.findByType("FOURG");
+        model.addAttribute("THREEG",THREEG);
+        model.addAttribute("FOURG",FOURG);
+        return  "postPaid";
 
-        List<PostPaid> postPlans = new ArrayList<>();
-        postRepo.findAll().forEach(i -> postPlans.add(i));
-        model.addAttribute("postPlans",postPlans);
-        return "postPaid";
     }
 
     @PostMapping
     public String processPlanFrom(@Valid PostPaidController postpaidcontroller, Model model){
 
-        //postRepo.save(postpaidcontroller);
+
             model.addAttribute("payment",postpaidcontroller);
             return "redirect:/payment";
 

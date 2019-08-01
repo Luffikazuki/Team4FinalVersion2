@@ -6,5 +6,6 @@ import org.springframework.data.mongodb.repository.MongoRepository;
 import java.util.List;
 
 public interface PostPaidPlanRepository extends MongoRepository<PostPaid,String> {
+    List<PostPaid> findByType(String type);
 
 }

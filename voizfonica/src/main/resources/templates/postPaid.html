@@ -6,7 +6,7 @@
 		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" 
 		integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<title>New Connection | VoizFonica</title>
+		<title>PostPaid Connection | VoizFonica</title>
 		<link rel="stylesheet" type="text/css" th:href="@{/css/postPaid.css}">
 	<!--<script type="text/javascript" src="https://gc.kis.v2.scr.kaspersky-labs.com/FD126C42-EBFA-4E12-B309-BB3FDD723AC1/main.js" charset="UTF-8"></script>--></head>
 	
@@ -70,7 +70,10 @@
 <!--Header / Navigation ends here -->
         
         
-    <!-- postpaid / Navigation Starts -->  
+    <!-- postpaid / Navigation Starts -->
+    <br><br>
+    <h2 align="center">Postpaid plans</h2>
+    <br>
         <section style="margin-top:40px;margin-bottom:400px;" class="new-align">
      <div class="accordion" id="accordionExample">
   <div class="card">
@@ -87,19 +90,19 @@
       <div style="overflow-x:auto;" class="card-body" >
 	  
 <form method="post" >
-<table  id="table" class="table table-striped"  style="border-color:#0076ff;">
+<table  class="table table-striped"  style="border-color:#0076ff;">
      <thead>
 	   <tr>
 	   
 	   <td><b>PLANS</b></td>
 	   <td><b>VALIDITY</b></td>
-	   <td><b>BENIFITS</b></td>
+	   <td><b>BENEFITS</b></td>
 	   <td><b>REGISTER</b></td>
 	   </tr>
 	   </thead>
 	   <tbody>
 
-       <tr th:each="pp :${postPlans}">
+       <tr th:each="pp :${THREEG}">
             <td th:text="${pp.postMoney}">100INR</td>
            <td th:text="${pp.validity}">Monthly Plan</td>
            <td th:text="${pp.benefits}">25GB</td>
@@ -113,7 +116,44 @@
     </div>
   </div>
 
+         <div class="card">
+             <div class="card-header" id="headingTwo">
+                 <h2 class="mb-0">
+                     <button class="btn btn-link btn-primary" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo" style="color:white;text-decoration: none;">
+                         4G [ 2 GB /  DAY  ]
+                     </button>
+                 </h2>
+             </div>
+             <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
+                 <div style="overflow-x:auto;"class="card-body">
+                     <form method="post" >   <table  id="table" class="table table-striped"  style="border-color:#0076ff;" >
+                         <thead>
+                         <tr>
 
+                             <td><b>PLANS</b></td>
+                             <td><b>VALIDITY</b></td>
+                             <td><b>BENEFITS</b></td>
+                             <td><b>RECHARGE</b></td>
+                         </tr>
+                         </thead>
+                         <tbody>
+
+                         
+
+                         <tr th:each="pp :${FOURG}">
+                             <td th:text="${pp.postMoney}">100INR</td>
+                             <td th:text="${pp.validity}">Monthly Plan</td>
+                             <td th:text="${pp.benefits}">25GB</td>
+                             <td>
+                                 <input type="submit" id="tst" value="Recharge"  class="btn btn-primary" /></td>
+                         </tr>
+
+
+                         </tbody>
+                     </table></form>
+                 </div>
+             </div>
+         </div>
             </div></section>
 	<!-- postpaid / Navigation Ends -->
         
