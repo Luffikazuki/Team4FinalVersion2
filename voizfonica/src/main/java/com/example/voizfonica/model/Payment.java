@@ -16,12 +16,12 @@ public class Payment {
     @Id
     private String id;
     @NotNull
-    @Size(min = 7, max = 50 )
+    @Size(min = 7, message = "☜⌫ Invalid name")
     private String name;
-    @CreditCardNumber(message="Not a valid credit card number")
+    @CreditCardNumber(message="☜⌫ Invalid credit card number")
     private String ccNum;
-    @Pattern(regexp="^(0[1-9]|1[0-2])([\\/])([1-9][0-9])$", message="Must be formatted MM/YY")
+    @Pattern(regexp="^(0[1-9]|1[0-2])([\\/])([1-9][0-9])$", message="☜⌫ Must be formatted MM/YY")
     private String ccExpiration;
-    @Digits(integer=3, fraction=0, message="Invalid CVV")
+    @Digits(integer=3, fraction=0, message="☜⌫ Invalid CVV")
     private String ccCVV;
 }
