@@ -1,22 +1,17 @@
 package com.example.voizfonica.controller;
 
-import com.example.voizfonica.data.DongleSampleRepository;
 import com.example.voizfonica.data.PlanDetailRepository;
 import com.example.voizfonica.data.SubscriptionDetailRepository;
-import com.example.voizfonica.model.DongleSample;
+
 import com.example.voizfonica.model.PlanDetail;
 import com.example.voizfonica.model.SubscriptionDetail;
-import com.example.voizfonica.model.UserCredential;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.bind.support.SessionStatus;
 
-import javax.validation.Valid;
 import java.util.List;
-
+/*
 @Controller
 @SessionAttributes("subscriptionDetail")
 public class ChoosePlanController {
@@ -82,3 +77,4 @@ public class ChoosePlanController {
 //
 //    }
 }
+*/

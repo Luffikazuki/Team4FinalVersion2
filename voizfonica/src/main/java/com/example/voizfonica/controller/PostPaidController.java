@@ -28,10 +28,7 @@ public class PostPaidController {
         this.postRepo=postRepo;
     }
 
-    @ModelAttribute(name = "payment")
-    public Payment payment(){
-        return new Payment();
-    }
+
     @GetMapping
     public String postPlanFunc(Model model) {
         List<PostPaid> THREEG=postRepo.findByType("THREEG");
