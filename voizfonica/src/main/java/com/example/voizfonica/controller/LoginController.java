@@ -16,7 +16,7 @@ import javax.validation.Valid;
 import java.util.List;
 
 @Controller
-@RequestMapping("/login")
+@RequestMapping("/loginPage")
 
 public class LoginController {
     private UserCredentialRepository userCredentialRepository;
