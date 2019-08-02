@@ -34,7 +34,7 @@ private String userId;
     @GetMapping
     public String getEdit(Model model) {
 
-        List<UserCredential> user = userCredentialRepository.findByEmailIdAndPassword("nandhinivishwanathanbe@gmail.com", "nandhini1");
+        List<UserCredential> user = userCredentialRepository.findByEmailIdAndPassword("nandhinivishwanathanbe@gmail.com", "nandhini12");
         userId=user.get(0).getId();
         model.addAttribute("user", user);
         return "profileEdit";
@@ -46,7 +46,7 @@ private String userId;
         }else{
            // userCredentialRepository.save(userCredential);
             userCredentialRepository.save(userCredential);
-            userCredentialRepository.
+           // userCredentialRepository.
            return "redirect:/profile";
         }
     }
