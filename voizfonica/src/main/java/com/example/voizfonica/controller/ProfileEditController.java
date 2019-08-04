@@ -3,13 +3,13 @@ package com.example.voizfonica.controller;
 import com.example.voizfonica.data.UserCredentialRepository;
 import com.example.voizfonica.model.UserCredential;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.mongodb.core.query.Criteria;
+import org.springframework.data.mongodb.core.query.Query;
+import org.springframework.data.mongodb.core.query.Update;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.util.List;
@@ -35,20 +35,31 @@ private String userId;
     public String getEdit(Model model) {
 
         List<UserCredential> user = userCredentialRepository.findByEmailIdAndPassword("nandhinivishwanathanbe@gmail.com", "nandhini12");
-        userId=user.get(0).getId();
         model.addAttribute("user", user);
         return "profileEdit";
     }
     @PostMapping
     public String setChanges(@Valid UserCredential userCredential, Errors errors, Model model){
-        if(errors.hasErrors()){
-            return "redirect:/profileEdit";
-        }else{
-           // userCredentialRepository.save(userCredential);
-            userCredentialRepository.save(userCredential);
-           // userCredentialRepository.
+      List<UserCredential> user=userCredentialRepository.findUserCredentialByAadharNumberMatches("917703539337");
+        userId=(String)user.get(0).getId();
+        UserCredential user1=new UserCredential();
+        user1.setId(userId);
+        user1.setUserName(userCredential.getUserName());
+        user1.setContactNumber(userCredential.getContactNumber());
+        user1.setAadharNumber(user.get(0).getAadharNumber());
+        user1.setAddress(userCredential.getAddress());
+        user1.setEmailId(userCredential.getEmailId());
+        user1.setPanNumber(user.get(0).getPanNumber());
+        user1.setPassword(userCredential.getPassword());
+        user1.setRequiredPlan(user.get(0).getRequiredPlan());
            return "redirect:/profile";
-        }
+
     }
+    /*@PutMapping
+    public String finalUpdate(UserCredential userCredential,Model model)
+    {
+        userCredentialRepository.save(userCredential);
+        return "redirect:/customerComplaint";
+    }*/
 }
 
