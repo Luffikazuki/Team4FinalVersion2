@@ -7,6 +7,7 @@
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>New Connection | VoizFonica</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">  
     <link rel="stylesheet" type="text/css" th:href="@{/css/payment.css}">
     </head>
 
@@ -81,6 +82,22 @@
 
             <form class="container-fluid" style="background-color:lightgrey;"  th:action="@{/payment}" th:object="${payment}" method="post">
                     <br>
+                  
+                  
+                
+                <div class="input-group form-group">
+                    <div class="input-group-prepend">
+                        <label style="margin-left:20px;width:150px" >Accepted Cards</label>
+                        <div class="icon-container" style="margin-left:20px;margin-right:20px;width:150px">
+                            <i class="fa fa-cc-visa" style="color:navy;"></i>
+                            <i class="fa fa-cc-amex" style="color:blue;"></i>
+                            <i class="fa fa-cc-mastercard" style="color:red;"></i>
+                            <i class="fa fa-cc-discover" style="color:orange;"></i>
+                        </div>
+                    </div>
+                </div>
+                  
+                  
                 <div class="input-group form-group">
                         <div class="input-group-prepend">
                             <label style="margin-left:20px;width:150px">CardName</label>
