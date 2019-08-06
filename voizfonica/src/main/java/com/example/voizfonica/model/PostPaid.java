@@ -41,4 +41,11 @@ public class PostPaid {
     public String getType() {
         return type;
     }
+
+    public PostPaid(String postMoney, String validity, String benefits, String type) {
+        this.postMoney = postMoney;
+        this.validity = validity;
+        this.benefits = benefits;
+        this.type = type;
+    }
 }

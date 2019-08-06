@@ -1,7 +1,9 @@
 package com.example.voizfonica.controller;
 
 import com.example.voizfonica.data.UserCredentialRepository;
+import com.example.voizfonica.model.Login;
 import com.example.voizfonica.model.UserCredential;
+import org.apache.catalina.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
@@ -13,14 +15,16 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.util.List;
+import java.util.Optional;
 
 @Controller
 @RequestMapping("/profileEdit")
+@SessionAttributes("login")
 public class ProfileEditController {
-    
 
-private UserCredentialRepository userCredentialRepository;
-private String userId;
+
+    private UserCredentialRepository userCredentialRepository;
+    private String userId;
     @Autowired
     private ProfileEditController(UserCredentialRepository userCredentialRepository) {
         this.userCredentialRepository = userCredentialRepository;
@@ -31,35 +35,39 @@ private String userId;
     public UserCredential userCredential() {
         return new UserCredential();
     }
-    @GetMapping
-    public String getEdit(Model model) {
 
-        List<UserCredential> user = userCredentialRepository.findByEmailIdAndPassword("nandhinivishwanathanbe@gmail.com", "nandhini12");
+    @ModelAttribute(name = "login")
+    public Login login(){
+        return new Login();
+    }
+    @GetMapping
+    public String getEdit(Model model,
+                          @ModelAttribute Login login) {
+        Optional<UserCredential> userCredential = userCredentialRepository.findById(login.getId());
+        UserCredential user = userCredential.get();
         model.addAttribute("user", user);
         return "profileEdit";
     }
     @PostMapping
-    public String setChanges(@Valid UserCredential userCredential, Errors errors, Model model){
-      List<UserCredential> user=userCredentialRepository.findUserCredentialByAadharNumberMatches("917703539337");
-        userId=(String)user.get(0).getId();
+    public String setChanges(@Valid UserCredential userCredential, Errors errors, Model model,
+                             @ModelAttribute Login login){
+        Optional<UserCredential> user=userCredentialRepository.findById(login.getId());
+
         UserCredential user1=new UserCredential();
-        user1.setId(userId);
+        user1.setId(user.get().getId());
         user1.setUserName(userCredential.getUserName());
         user1.setContactNumber(userCredential.getContactNumber());
-        user1.setAadharNumber(user.get(0).getAadharNumber());
+        user1.setAadharNumber(user.get().getAadharNumber());
         user1.setAddress(userCredential.getAddress());
         user1.setEmailId(userCredential.getEmailId());
-        user1.setPanNumber(user.get(0).getPanNumber());
+        user1.setPanNumber(user.get().getPanNumber());
         user1.setPassword(userCredential.getPassword());
-        user1.setRequiredPlan(user.get(0).getRequiredPlan());
-           return "redirect:/profile";
+        user1.setRequiredPlan(user.get().getRequiredPlan());
+        userCredentialRepository.save(user1);
+        return "redirect:/profile";
 
     }
-    /*@PutMapping
-    public String finalUpdate(UserCredential userCredential,Model model)
-    {
-        userCredentialRepository.save(userCredential);
-        return "redirect:/customerComplaint";
-    }*/
+
 }
+
 

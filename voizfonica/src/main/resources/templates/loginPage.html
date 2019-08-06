@@ -36,6 +36,7 @@
                     <li class="nav-item">
                         <a class="nav-link headerFont" href="/" >Home</a>
                     </li>
+
                     <li class="nav-item">
                         <a class="nav-link headerFont" href="eStore">EStore</a>
                     </li>
@@ -61,7 +62,7 @@
                     <img class="login-brand" src="images/headerLogin.png" alt="Login/SignUP" title="Login/SignUP" width="10"  height ="10">
                 </button>
                 <div class="dropdown-menu dropdown-menu-right dropdown-menu-lg-left">
-                    <a class="dropdown-item" href = "loginPage">Login</a>
+                    <a class="dropdown-item" href = "login">Login</a>
                     <div class="dropdown-divider"></div>
                     <a class="dropdown-item" href = "customerRegister" >Sign Up</a>
 
@@ -84,8 +85,9 @@
             </div>
             <div class="card-body">
                 <form method="post"  th:object="${login}">
-                    <div>
-                        <span class="badge badge-danger" th:if="@{#fields.hasErrors(emailId)}" th:errors="*{emailId}">Errors</span>
+                    <div >
+                        <span class="badge badge-danger" th:if="@{#fields.hasErrors(emailId)}"
+                              th:errors="*{emailId}">Errors</span>
                     </div>
                     <div class="input-group form-group">
                         <div class="input-group-prepend">
@@ -94,8 +96,9 @@
                         <input required type="email" class="form-control" placeholder="Email" th:field="*{emailId}"/>
                     </div>
 
-                    <div>
-                        <span class="badge badge-danger" th:if="@{#fields.hasErrors(password)}" th:errors="*{password}">Errors</span>
+                    <div >
+                        <span class="badge badge-danger" th:if="@{#fields.hasErrors(password)}"
+                              th:errors="*{password}">Errors</span>
                     </div>
 
                     <div class="input-group form-group">
@@ -105,9 +108,10 @@
                         <input required type="password" class="form-control" placeholder="Password" th:field="*{password}"/>
                     </div>
 
-                    <div th:objec="${passErrors}">
-                        <span th:text="${errorMessage}">
-                            Message
+
+                    <div class="form-group">
+                        <span class="badge badge-danger" th:text="${errorMessage}">
+                            Error Message
                         </span>
                     </div>
 
@@ -116,10 +120,12 @@
                         <input type="submit" align = "center" value="Login" class="btn float-right login_btn">
                     </div>
 
-                    <div class="form-group">
-                        <a th:href="@{/customerRegister}">New Customer?</a>
-                    </div>
+
                 </form>
+
+                <div>
+                    <a th:href="@{/customerRegister}">New Customer?</a>
+                </div>
 
             </div>
 

@@ -36,4 +36,11 @@ public class PrePaid {
     public String getType() {
         return type;
     }
+
+    public PrePaid(String preMoney, String validity, String benefits, String type) {
+        this.preMoney = preMoney;
+        this.validity = validity;
+        this.benefits = benefits;
+        this.type = type;
+    }
 }

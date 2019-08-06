@@ -8,7 +8,7 @@
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Dongle Plans | VoizFonica</title>
-    <link rel="stylesheet" type="text/css" th:href="@{/css/dongleStyle.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/dongle.css}">
     <!--<script type="text/javascript" src="https://gc.kis.v2.scr.kaspersky-labs.com/FD126C42-EBFA-4E12-B309-BB3FDD723AC1/main.js" charset="UTF-8"></script>--></head>
 
 <body> <!--Start of body-->
@@ -58,7 +58,7 @@
                     <img class="login-brand" src="images/headerLogin.png" alt="Login/SignUP" title="Login/SignUP" width="10"  height ="10">
                 </button>
                 <div class="dropdown-menu dropdown-menu-right dropdown-menu-lg-left">
-                    <a class="dropdown-item" href = "loginPage">Login</a>
+                    <a class="dropdown-item" href = "login">Login</a>
                     <div class="dropdown-divider"></div>
                     <a class="dropdown-item" href = "customerRegister" >Sign Up</a>
 
@@ -98,10 +98,10 @@
                         <thead>
                         <tr>
 
-                            <td><b>PLANS</b></td>
-                            <td><b>VALIDITY</b></td>
-                            <td><b>BENEFITS</b></td>
-                            <td><b>BUY</b></td>
+                            <td><b>Plan</b></td>
+                            <td><b>Validity</b></td>
+                            <td><b>Benefits</b></td>
+                            <td><b>Choose</b></td>
 
                         </tr>
                         </thead>
@@ -110,7 +110,8 @@
                             <td th:text="${iter.dongleMoney}"></td>
                             <td th:text="${iter.dongleValidity}"></td>
                             <td th:text="${iter.dongleBenefits}"></td>
-                            <td><a href="payment"><button type="button" class="btn btn-primary">Recharge</button></a></td>
+                            <td> <a class="btn btn-outline-primary" th:href="@{'/chooseplan/dongle/' + ${iter.id}}"
+                                    role="button">Select</a></td>
                         </tr>
 
                         </tbody>
@@ -131,10 +132,10 @@
                     <table  id="table" class="table table-striped"  style="border-color:#0076ff;" >
                         <thead>
                         <tr>
-                            <td><b>PLANS</b></td>
-                            <td><b>VALIDITY</b></td>
-                            <td><b>BENEFITS</b></td>
-                            <td><b>BUY</b></td>
+                            <td><b>Plans</b></td>
+                            <td><b>Validity</b></td>
+                            <td><b>Benefits</b></td>
+                            <td><b>Choose</b></td>
 
                         </tr>
                         </thead>
@@ -143,9 +144,10 @@
                             <td th:text="${iter.dongleMoney}"></td>
                             <td th:text="${iter.dongleValidity}"></td>
                             <td th:text="${iter.dongleBenefits}"></td>
-                            <td><a href="payment"><button type="button" class="btn btn-primary">Recharge</button></a></td>
+                            <td> <a class="btn btn-outline-primary" th:href="@{'/chooseplan/dongle/' + ${iter.id}}"
+                                    role="button">Select</a></td>
                         </tr>
-                         </tbody>
+                        </tbody>
                     </table>
                 </div>
             </div>
@@ -154,7 +156,7 @@
             <div class="card-header" id="headingThree">
                 <h2 class="mb-0">
                     <button class="btn btn-link btn-primary" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree"  style="color:white;text-decoration: none;" >
-                       Buy Dongle
+                        Buy Dongle
                     </button>
                 </h2>
             </div>

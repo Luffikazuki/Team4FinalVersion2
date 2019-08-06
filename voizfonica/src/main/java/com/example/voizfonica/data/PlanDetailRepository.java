@@ -6,5 +6,5 @@ import org.springframework.data.mongodb.repository.MongoRepository;
 import java.util.List;
 
 public interface PlanDetailRepository extends MongoRepository<PlanDetail,String> {
-    List<PlanDetail> findByType(String type);
+    List<PlanDetail> findByUserId(String userId);
 }

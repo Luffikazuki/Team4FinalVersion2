@@ -22,6 +22,9 @@ public class SubscriptionDetail {
     @NotNull
     private String plandId;
 
+    @NotNull
+    private Payment payment;
+
     public String getUserId() {
         return userId;
     }
@@ -45,4 +48,13 @@ public class SubscriptionDetail {
     public void setPlandId(String plandId) {
         this.plandId = plandId;
     }
+
+    public void setPayment(Payment payment) {
+        this.payment = payment;
+    }
+
+    public Payment getPayment(){
+        return payment;
+    }
+
 }

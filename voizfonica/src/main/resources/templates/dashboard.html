@@ -24,8 +24,9 @@
         </div>
         <div class="collapse navbar-collapse" id="myNavbar">
             <ul class="nav navbar-nav">
-                <li class="active"><a href="#">Dashboard</a></li>
-                <li><a href="profile">Profile</a></li>
+                <li class="active"><a href="dashboard">Dashboard</a></li>
+                <li><a href="/profile">Profile</a></li>
+                <li><a href="newConnection">New Connection</a></li>
                 <li><a href="unsubscribe">Unsubsricbe</a></li>
                 <li><a href="/">Logout</a></li>
 
@@ -38,11 +39,12 @@
     <div class="row content">
         <div class="col-sm-3 sidenav hidden-xs">
             <br>
-            <img src = "images/logo-small.png" height = "150px" width = "150px" > <br><br>
+            <img src = "../images/logo-small.png" height = "150px" width = "150px" > <br><br>
             <ul class="nav nav-pills nav-stacked">
-                <li class="active"><a href="#">Dashboard</a></li>
-                <li><a href="profile">Profile</a></li>
-                <li><a href="unsubscribe">Unsubscribe</a></li>
+                <li class="active"><a href="dashboard">Dashboard</a></li>
+                <li><a href="/profile">Profile</a></li>
+                <li><a href="newConnection">New Connection</a></li>
+                <li><a href="unsubscribe">Unsubsricbe</a></li>
                 <li><a href="/">Logout</a></li>
 
             </ul>
@@ -51,12 +53,12 @@
 
         <div class="col-sm-8">
             <div class="well">
-                <h4><b>Hi User! </b></h4>
+                <h4><b>Hi </b><b th:text="${login.userName}">UserName</b></h4>
                 <p>Welcome to your dashboard</p>
                 <hr class="my-4">
                 <div class="col-sm-18">
 
-                    <a href = "billRecharge.html"><p><button type="button" class="btn btn-primary">
+                    <a href = "payment"><p><button type="button" class="btn btn-primary">
                         Pay your bill
                     </button></p> </a>
                     <hr class="my-4">
@@ -64,7 +66,7 @@
                 <div class="row">
                     <div class="col-sm-4">
                         <div class="well">
-                            <h4 align= 'center'> <b> Balance </b> </h4><br>
+                            <h4 align= 'center'> <b> Call </b> </h4><br>
                             <div class="progress green">
                 <span class="progress-left">
                     <span class="progress-bar"></span>
@@ -72,7 +74,7 @@
                                 <span class="progress-right">
                     <span class="progress-bar"></span>
                 </span>
-                                <div class="progress-value">425.20 </div>
+                                <div class="progress-value">Unlimited </div>
                             </div>
                         </div>
                     </div>
@@ -86,7 +88,7 @@
                                 <span class="progress-right">
                     <span class="progress-bar"></span>
                 </span>
-                                <div class="progress-value">20 days </div>
+                                <div class="progress-value" th:text="${planDetail.validity}">20 days </div>
                             </div>
                         </div>
                     </div>
@@ -101,7 +103,7 @@
                                 <span class="progress-right">
                     <span class="progress-bar"></span>
                 </span>
-                                <div class="progress-value">940 MB</div>
+                                <div class="progress-value" th:text="${planDetail.data}">940 MB</div>
 
                             </div>
                         </div>
@@ -112,10 +114,11 @@
                             <h4><b> Current Plan: </b></h4>
                             <p> You are currently in this plan </p>
                             <ul>
-                                <li> 1 GB Data per day </li>
-                                <li> Unlimited Calls </li>
-                                <li> 100 free SMS </li>
-                                <li> Validity of 28 days </li>
+
+                                <li>Your Voizfonica number: <span th:text ="${planDetail.generatedNumber}">number</span></li>
+                                <li>Validity: <span th:text="${planDetail.validity}">text</span></li>
+                                <li>Plan ends on: <span th:text="${planDetail.endDate}">endDate</span></li>
+
                             </ul>
                         </div>
                     </div>

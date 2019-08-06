@@ -5,6 +5,7 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import javax.validation.constraints.NotNull;
+import java.util.Date;
 
 @Data
 @Document
@@ -13,33 +14,108 @@ public class PlanDetail {
     private String id;
 
     @NotNull
-    private String planName;
+    private String planId;
 
     @NotNull
-    private String planData;
+    private String userId;
 
     @NotNull
-    private String planValidity;
+    private String generatedNumber;
 
     @NotNull
-    private String type;
+    private String validity;
 
-    public String getPlanData(){
-        return planData;
-    }
+    @NotNull
+    private String data;
+
+    @NotNull
+    private String remainingData;
+
+    @NotNull
+    private Date startDate;
+
+    @NotNull
+    private Date endDate;
+
+    private String amountPaid;
+
     public String getId() {
         return id;
     }
 
-    public String getPlanName() {
-        return planName;
+    public void setId(String id) {
+        this.id = id;
     }
 
-    public String getPlanValidity() {
-        return planValidity;
+    public String getPlanId() {
+        return planId;
     }
 
-    public String getType() {
-        return type;
+    public void setPlanId(String planId) {
+        this.planId = planId;
+    }
+
+    public String getUserId() {
+        return userId;
+    }
+
+    public void setUserId(String userId) {
+        this.userId = userId;
+    }
+
+    public String getGeneratedNumber() {
+        return generatedNumber;
+    }
+
+    public void setGeneratedNumber(String generatedNumber) {
+        this.generatedNumber = generatedNumber;
+    }
+
+    public String getValidity() {
+        return validity;
+    }
+
+    public void setValidity(String validity) {
+        this.validity = validity;
+    }
+
+    public String getData() {
+        return data;
+    }
+
+    public void setData(String data) {
+        this.data = data;
+    }
+
+    public String getRemainingData() {
+        return remainingData;
+    }
+
+    public void setRemainingData(String remainingData) {
+        this.remainingData = remainingData;
+    }
+
+    public Date getStartDate() {
+        return startDate;
+    }
+
+    public void setStartDate(Date startDate) {
+        this.startDate = startDate;
+    }
+
+    public Date getEndDate() {
+        return endDate;
+    }
+
+    public void setEndDate(Date endDate) {
+        this.endDate = endDate;
+    }
+
+    public String getAmountPaid() {
+        return amountPaid;
+    }
+
+    public void setAmountPaid(String amountPaid) {
+        this.amountPaid = amountPaid;
     }
 }

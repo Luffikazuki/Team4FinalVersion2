@@ -1,44 +1,117 @@
-//PrePaidController.java
-
 package com.example.voizfonica.controller;
 
+import com.example.voizfonica.data.DongleRepository;
+import com.example.voizfonica.data.PostPaidRepository;
 import com.example.voizfonica.data.PrePaidRepository;
-import com.example.voizfonica.model.PrePaid;
+import com.example.voizfonica.model.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
-import javax.validation.Valid;
 import java.util.List;
 
-
 @Controller
-@RequestMapping("/prePaid")
+@SessionAttributes({"subscriptionDetail","login"})
 public class PrePaidController {
+    private PrePaidRepository prePaidRepository;
+    private PostPaidRepository postPaidRepository;
+    private DongleRepository dongleRepository;
 
-    private PrePaidRepository preRepo;
     @Autowired
-    public PrePaidController(PrePaidRepository preRepo) {
-        this.preRepo=preRepo;
+    public PrePaidController(PrePaidRepository prePaidRepository,
+                             PostPaidRepository postPaidRepository,
+                             DongleRepository dongleRepository){
+        this.prePaidRepository = prePaidRepository;
+        this.postPaidRepository = postPaidRepository;
+        this.dongleRepository = dongleRepository;
     }
 
-    @GetMapping
-    public String postPlanFunc(Model model) {
-        List<PrePaid> THREE=preRepo.findByType("THREE");
-        List<PrePaid> FOUR=preRepo.findByType("FOUR");
-        model.addAttribute("THREE",THREE);
-        model.addAttribute("FOUR",FOUR);
-        return  "prePaid";
-
+    @ModelAttribute(name ="login")
+    public Login login(){
+        return new Login();
     }
 
-    @PostMapping
-    public String processPlanFrom(@Valid PrePaidController prepaidcontroller, Model model){
-        model.addAttribute("payment",prepaidcontroller);
+    @GetMapping("/chooseplan/prePaid")
+    public String showPrePaidPlans(Model model){
+        List<PrePaid> threeG = prePaidRepository.findByType("3G");
+        List<PrePaid> fourG = prePaidRepository.findByType("4G");
+        model.addAttribute("threeG",threeG);
+        model.addAttribute("fourG",fourG);
+        return "prePaid";
+    }
+
+    @GetMapping("/prePaid")
+    public String showPrePaidPlanss(Model model){
+        List<PrePaid> threeG = prePaidRepository.findByType("3G");
+        List<PrePaid> fourG = prePaidRepository.findByType("4G");
+        model.addAttribute("threeG",threeG);
+        model.addAttribute("fourG",fourG);
+        return "prePaid";
+    }
+
+    @GetMapping("/chooseplan/postPaid")
+    public String showPostPaidPlans(Model model){
+        List<PostPaid> threeG = postPaidRepository.findByType("3G");
+        List<PostPaid> fourG = postPaidRepository.findByType("4G");
+        model.addAttribute("threeG",threeG);
+        model.addAttribute("fourG",fourG);
+        return "postPaid";
+    }
+
+    @GetMapping("/postPaid")
+    public String showPostPaidPlanss(Model model){
+        List<PostPaid> threeG = postPaidRepository.findByType("3G");
+        List<PostPaid> fourG = postPaidRepository.findByType("4G");
+        model.addAttribute("threeG",threeG);
+        model.addAttribute("fourG",fourG);
+        return "postPaid";
+    }
+
+
+    @GetMapping("/chooseplan/dongle")
+    public String showDonglePlans(Model model){
+        List<Dongle> threeG = dongleRepository.findByType("3G");
+        List<Dongle> fourG = dongleRepository.findByType("4G");
+        model.addAttribute("threeG",threeG);
+        model.addAttribute("fourG",fourG);
+        return "dongle";
+    }
+
+    @GetMapping("/dongle")
+    public String showDonglePlanss(Model model){
+        List<Dongle> threeG = dongleRepository.findByType("3G");
+        List<Dongle> fourG = dongleRepository.findByType("4G");
+        model.addAttribute("threeG",threeG);
+        model.addAttribute("fourG",fourG);
+        return "dongle";
+    }
+
+    @RequestMapping(value = "/chooseplan/prePaid/{planId}", method=RequestMethod.GET)
+    public String updateSubscriptionPostPaid(@PathVariable String planId,
+                                             @ModelAttribute SubscriptionDetail subscriptionDetail, Model model){
+        subscriptionDetail.setPlandId(planId);
+        model.addAttribute("subscriptionDetail",subscriptionDetail);
         return "redirect:/payment";
     }
+
+    @RequestMapping(value = "/chooseplan/postPaid/{planId}", method= RequestMethod.GET)
+    public String updateSubscriptionPrePaid(@PathVariable String planId, @ModelAttribute SubscriptionDetail subscriptionDetail,Model model){
+        subscriptionDetail.setPlandId(planId);
+        model.addAttribute("subscriptionDetail",subscriptionDetail);
+        return "redirect:/payment";
+    }
+
+    @RequestMapping(value = "/chooseplan/dongle/{planId}", method= RequestMethod.GET)
+    public String updateSubscriptionDongle(@PathVariable String planId, @ModelAttribute SubscriptionDetail subscriptionDetail,
+                                           Model model){
+        subscriptionDetail.setPlandId(planId);
+        model.addAttribute("subscriptionDetail",subscriptionDetail);
+        return "redirect:/payment";
+    }
+
+
+
+
 
 }
