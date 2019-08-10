@@ -7,4 +7,7 @@ import java.util.List;
 
 public interface PlanDetailRepository extends MongoRepository<PlanDetail,String> {
     List<PlanDetail> findByUserId(String userId);
+    List<PlanDetail> findAndRemoveByUserId(String userId);
+
+
 }

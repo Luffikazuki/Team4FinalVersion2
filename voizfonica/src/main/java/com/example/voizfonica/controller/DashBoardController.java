@@ -43,8 +43,10 @@ public class DashBoardController {
         }else{
             model.addAttribute("login",login);
             List<PlanDetail> planDetails = planDetailRepository.findByUserId(login.getId());
-            PlanDetail planDetail = planDetails.get(0);
-            model.addAttribute("planDetail",planDetail);
+            if(!planDetails.isEmpty()) {
+                PlanDetail planDetail = planDetails.get(0);
+                model.addAttribute("planDetail", planDetail);
+            }
             return "/dashboard";
         }
     }
