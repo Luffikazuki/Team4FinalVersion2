@@ -15,7 +15,7 @@ import org.springframework.data.annotation.Id;
 public class Complaint {
 
     @Id
-    private String id;
+    private static String id;
 
     @NotNull(message="Please select one")
     private  String queryType;
@@ -24,4 +24,14 @@ public class Complaint {
     @Size(max=500)
     private   String queryByUser;
 
+    private static int ticket;
+
+    public static int getTicket() {
+        return ticket;
+    }
+
+    public static void setTicket(int ticket) {
+        Complaint.ticket = ticket;
+    }
 }
+
