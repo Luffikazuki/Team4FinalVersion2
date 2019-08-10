@@ -33,7 +33,7 @@ public class UserCredential {
     @Pattern(regexp = "^([a-zA-Z]){5}([0-9]){4}([a-zA-Z]){1}?$", message = "Example AAAAA1234A")
     private String panNumber;
 
-    @NotNull
+
     private String requiredPlan;
 
     @NotEmpty(message = "Provide your address")

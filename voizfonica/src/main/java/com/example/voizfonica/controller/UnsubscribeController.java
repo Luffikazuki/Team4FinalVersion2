@@ -66,8 +66,13 @@ public class UnsubscribeController {
         List<PlanDetail> planDetail=planDetailRepository.findByUserId(user.getId());
         PlanDetail plan=planDetail.get(0);
         planDetailRepository.delete(plan);
-        //List<PlanDetail> planDetailRemoved=planDetailRepository.findAndRemoveByUserId(user.getId());
-        //System.out.println(planDetailRemoved);
+        List<SubscriptionDetail> subscriptionDetail1=subscriptionDetailRepository.findSubscriptionDetailByUserId(user.getId());
+        SubscriptionDetail plan1=subscriptionDetail1.get(0);
+        plan1.setPlandId("Not Available");
+        plan1.setProductId("Not Plans selected");
+        user.setRequiredPlan("Not Plans Selected");
+        subscriptionDetailRepository.save(plan1);
+        userCredentialRepository.save(user);
 
         return "redirect:/dashboard";
 
