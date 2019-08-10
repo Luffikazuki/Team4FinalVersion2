@@ -24,14 +24,14 @@ public class Complaint {
     @Size(max=500)
     private   String queryByUser;
 
-    private static int ticket;
+    private  Integer ticket=100;
 
-    public static int getTicket() {
+    public Integer getTicket() {
         return ticket;
     }
 
-    public static void setTicket(int ticket) {
-        Complaint.ticket = ticket;
+    public void setTicket(Integer ticket) {
+        this.ticket = ticket;
     }
 }
 

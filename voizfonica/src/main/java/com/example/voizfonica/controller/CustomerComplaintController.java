@@ -44,7 +44,7 @@ public class CustomerComplaintController {
             return "customerComplaint";
         }else{
             System.out.println(complaint);
-            complaint.setTicket(125);
+            complaint.setTicket(complaint.getTicket()+1);
             System.out.println(complaint);
             complaintrepository.save(complaint);
             // model.addAttribute("showDetails",userCredentials);
