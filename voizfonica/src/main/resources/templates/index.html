@@ -8,6 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Home | VoizFonica</title>
     <link rel="stylesheet" type="text/css" th:href="@{/css/indexStyle.css}">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 
 <body> <!--Start of body-->
@@ -72,6 +73,12 @@
 <!-- HomePage -->
 
 <!-- Carousel -->
+<br>
+
+<div class = "container">
+    <div class="alrazy-title s-component-content s-font-title" data-splitting>Welcome to the earth's mightiest telecom!</div>
+</div>
+<br>
 
 <div class="bd-example">
     <div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel">
@@ -82,27 +89,28 @@
         </ol>
         <div class="carousel-inner">
             <div class="carousel-item active">
-                <img src="images/daily1.gif" class="d-block mx-auto"  width="850"  height ="500">
+                <a href = 'dongle'>
+                    <img th:src="@{/images/daily3.gif}" class="d-block mx-auto"   width="100%"  height ="500">
+                    <div class="carousel-caption d-none d-md-block">
+                        <h4>VoizFonica Dongle</h4>
+                        <b><h6>Jump into the world's best dongle features</h6></b>
+                    </div>
+                </a>
+            </div>
+
+            <div class="carousel-item">
+                <img src="images/daily1.png" class="d-block mx-auto"  width="100%"  height ="500">
                 <div class="carousel-caption d-none d-md-block">
-                    <font color="black"><h4>Get a new Sim</h4>
-                        <p><a href="customerRegister"><button type="button" class="btn btn-primary">Register Here!</button></a></p> </font>
+                    <font color="white"><h4 >Get a new VoizFonica Sim to get connect across the world.</h4>
+                        <p><a href="customerRegister"><button type="button" class="btn btn-danger">Register Here!</button></a></p> </font>
                 </div>
             </div>
             <div class="carousel-item">
                 <a href = 'plans'>
-                    <img src="images/daily2.gif" class="d-block mx-auto"   width="900"  height ="500">
+                    <img src="images/daily2.gif" class="d-block mx-auto"   width="1300"  height ="500">
                     <div class="carousel-caption d-none d-md-block">
                         <font color="black">
                             <h5><p>Get to know about VoizFonica's exciting offers.</p> </h5></font>
-                    </div>
-                </a>
-            </div>
-            <div class="carousel-item">
-                <a href = 'dongle'>
-                    <img src="images/daily3.gif" class="d-block mx-auto"   width="900"  height ="500">
-                    <div class="carousel-caption d-none d-md-block">
-                        <h4>VoizFonica Dongle</h4>
-                        <b><p>Jump into the world's best dongle features</b></p>
                     </div>
                 </a>
             </div>
@@ -118,26 +126,72 @@
             </a>
         </div>
     </div>
-    <br><br>
-    <!-- Carousel ends -->
+
+</div>
+
+<!-- Carousel ends -->
+
+<!-- Our services -->
+
+<div class="servicehead">
+    <div class="title-arch">
+        <br><br><h1 align = "center" style = "color:white">Our Services</h1></div>
 
 
-    <table align ="center"  width=82%>
-        <tr>
-            <td align ="center" ><a href = "postPaid"><img src="images/postpaid.png"  style="width:38%;"></a></td>
-            <td align ="center" ><a href = "prePaid"> <img src="images/prepaid.png" style="width:40%;"></a></td>
-            <td align ="center" ><a href = "dongle"><img src="images/dongle.jpg"  style="width:40%;"></a></td>
-        </tr>
-    </table>
+    <div class="services">
+        <div class="row">
+
+            <div class="col-lg-3 col-md-4 col-sm-12 col-xs-12 Services-tab item">
+                <div class="folded-corner service_tab_1">
+                    <div class="text">
+                        <i class="fa fa-mobile-phone fa-5x fa-icon-image"></i>
+                        <a style = "text-decoration:none" href = "postPaid">
+                            <p class="item-title">
+                            <h3 style = "color:white"> Postpaid</h3>
+                            </p><!-- /.item-title -->
+                            <p>
+                                Your number. Your Plans. <br> Your choice. <br><br>Get a glance of variety of Voizfonica's exclusive Postpaid plans.
+                            </p>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-3 col-md-4 col-sm-12 col-xs-12 Services-tab item">
+                <div class="folded-corner service_tab_1">
+                    <div class="text">
+                        <i class="	fa fa-phone fa-5x fa-icon-image"></i>
+                        <a style = "text-decoration:none" href = "prePaid">
+                            <p class="item-title">
+                            <h3 style = "color:white">Prepaid</h3>
+                            </p><!-- /.item-title -->
+                            <p>
+                                100% Cashback on select unlimited plans. <br><br> Get iRoamFREE pack and enjoy Unlimited Data & Calls overseas!
+                            </p>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-4 col-sm-12 col-xs-12 Services-tab item">
+                <div class="folded-corner service_tab_1">
+                    <div class="text">
+                        <i class="fa fa-rss fa-5x fa-icon-image"></i>
+                        <a style = "text-decoration:none" href = "dongle">
+                            <p class="item-title">
+                            <h3 style = "color:white">Dongle</h3>
+                            </p><!-- /.item-title -->
+                            <p>
+                                Easy to connect USB data dongle. <br>Enjoy a seamless and uniterrupted service with VoizFonica portable WiFi Dongle.
+                            </p>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
     <br>
-    <table align ="center"  width=82%>
-        <tr>
-            <td align ="center"><a href = "postPaid" style ="text-decoration: none;"> <h5>Postpaid</h5></a></td>
-            <td align ="center"><a href = "prePaid" style ="text-decoration: none;"> <h5>Prepaid</h5></a></td>
-            <td align ="center"><a href = "dongle" style ="text-decoration: none;"> <h5>Dongle</h5></a></td>
-        </tr>
-    </table>
-    <br><br><br><br>
+
+
     <!-- Footer starts -->
     <b>
         <footer class="page-footer">
@@ -186,17 +240,19 @@
                 <br>
                 <hr>
                 <div class="footer-copyright text-center">© 2019 VoizFonica. All Rights Reserved </div>
+            </div>
         </footer>
-
-
-
-
 
         <!-- CDN's of js and jquery -->
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
                 integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
                 integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+        <script src="https://unpkg.com/splitting@1.0.0/dist/splitting.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script>
+            Splitting();
+        </script>
 </body> <!--End of body -->
 
 </html>
