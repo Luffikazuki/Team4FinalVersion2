@@ -75,7 +75,6 @@
 
 <!--Header / Navigation ends here -->
 
-
 <!-- Register / Navigation Starts -->
 <br><br><br>
 <b>
@@ -88,6 +87,18 @@
 
 
         <form method="post" th:object="${userCredential}" >
+
+            <div class="formstyle">
+                <span class="badge badge-info" th:if="${registrationSuccess} == 'yes'">
+                    Successfully registered &nbsp;
+                    <a href="login" class="btn btn-dark">Click here</a>
+                </span>
+            </div>
+            <div class="formstyle">
+                <span class="badge badge-danger" th:if="${mailExist} == 'yes'">
+                    Email already exist!
+                </span>
+            </div>
             <div>
                 <span class="badge badge-danger" th:if="@{#fields.hasErrors(userName)}" th:errors="*{userName}">Errors</span>
             </div>
@@ -113,6 +124,7 @@
                 <label>Password</label>
                 <input class="container-fluid-block col-12 col-sm-12 col-md-7" th:field="*{password}"
                        required placeholder="Password" id="password" type="password" onkeyup="check();"/>
+                <i onclick="showPassword()" class="fa fa-eye" style="font-size:24px;"></i>
             </div>
 
             <span class="badge badge-warning" id="showNotMatch"></span>
@@ -123,6 +135,7 @@
                 <input class="container-fluid-block col-12 col-sm-12 col-md-7 " required type="password"
                        placeholder="Confirm Password"
                        name="confirm_password" id="confirm_password" onkeyup="check();"/>
+                <i onclick="showConfirmPassword()" class="fa fa-eye" style="font-size:24px;"></i>
             </div>
             <div>
                 <span class="badge badge-danger" th:if="@{#fields.hasErrors(contactNumber)}" th:errors="*{contactNumber}">Errors</span>
@@ -148,26 +161,55 @@
                 <input class="container-fluid-block col-12 col-sm-12 col-md-7 numbers" required  th:field="*{aadharNumber}" placeholder="Aadhar number" id="aadharNumber" type="number"/>
             </div>
 
+            <!--            <div>-->
+            <!--                <span class="badge badge-danger" th:if="@{#fields.hasErrors(requiredPlan)}" th:errors="*{requiredPlan}">Errors</span>-->
+            <!--            </div>-->
+
+            <!--            <div class="formstyle" >-->
+            <!--                <label for="plan">Required Plan</label>-->
+            <!--                <select  required name="plan" id="plan" th:field="*{requiredPlan}" style="width:200px; background-color:linen;">-->
+            <!--                    <option value="-1">Please select</option>-->
+            <!--                    <option value="prePaid">Prepaid</option>-->
+            <!--                    <option value="postPaid">Postpaid</option>-->
+            <!--                    <option value="dongle">Dongle</option>-->
+            <!--                </select>-->
+            <!--            </div>-->
+
             <div>
-                <span class="badge badge-danger" th:if="@{#fields.hasErrors(requiredPlan)}" th:errors="*{requiredPlan}">Errors</span>
+                <span class="badge badge-danger" th:if="@{#fields.hasErrors(securityQuestion)}"
+                      th:errors="*{securityQuestion}">Errors</span>
             </div>
 
             <div class="formstyle" >
-                <label for="plan">Required Plan</label>
-                <select  required name="plan" id="plan" th:field="*{requiredPlan}" style="width:200px; background-color:linen;">
-                    <option value="-1">Please select</option>
-                    <option value="prePaid">Prepaid</option>
-                    <option value="postPaid">Postpaid</option>
-                    <option value="dongle">Dongle</option>
+                <label for="plan">Security Question</label>
+                <select  required name="secuityQuestion" id="plan" th:field="*{securityQuestion}"
+                         style="width:200px; background-color:linen;">
+                    <option value="null">Please select</option>
+                    <option value="What is your first school name?">What is your first school name?</option>
+                    <option value="What is your spouse name?">What is your spouse name?</option>
+                    <option value="What is your first pet name?">What is your first pet name?</option>
+                    <option value="What is your favorite anime?">What is your favorite anime?</option>
                 </select>
             </div>
+
+            <div>
+                <span class="badge badge-danger" th:if="@{#fields.hasErrors(securityAnswer)}"
+                      th:errors="*{securityAnswer}">Errors</span>
+            </div>
+            <div class="formstyle" >
+                <label>Answer</label>
+                <input class="container-fluid-block col-12 col-sm-12 col-md-7" required
+                       th:field="*{securityAnswer}" placeholder="Please give your answer!" id="securityAnswer" type="text"/>
+            </div>
+
+
 
             <div>
                 <span class="badge badge-danger" th:if="@{#fields.hasErrors(address)}" th:errors="*{address}">Errors</span>
             </div>
             <div class="formstyle" >
                 <label>Address</label>
-                <textarea class="container-fluid-block col-12 col-sm-12 col-md-7" th:field="*{address}" cols="40" rows="3" ></textarea>
+                <textarea class="container-fluid-block col-12 col-sm-12 col-md-7" th:field="*{address}"required   cols="40" rows="3" ></textarea>
             </div>
 
             <div class="formstyle">
@@ -176,15 +218,14 @@
 
 
 
+
         </form>
 
 
     </div>
-    <br>
 
 
     <!-- Register / Navigation Ends -->
-
 
     <!-- Footer starts --><b>
     <footer class="page-footer">

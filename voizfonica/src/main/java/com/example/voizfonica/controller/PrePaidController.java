@@ -18,6 +18,7 @@ public class PrePaidController {
     private PostPaidRepository postPaidRepository;
     private DongleRepository dongleRepository;
 
+
     @Autowired
     public PrePaidController(PrePaidRepository prePaidRepository,
                              PostPaidRepository postPaidRepository,
@@ -32,12 +33,15 @@ public class PrePaidController {
         return new Login();
     }
 
-    @GetMapping("/chooseplan/prePaid")
+    @GetMapping("/newConnection/prePaid")
     public String showPrePaidPlans(Model model){
         List<PrePaid> threeG = prePaidRepository.findByType("3G");
         List<PrePaid> fourG = prePaidRepository.findByType("4G");
         model.addAttribute("threeG",threeG);
         model.addAttribute("fourG",fourG);
+        SubscriptionDetail subscriptionDetail = new SubscriptionDetail();
+        subscriptionDetail.setProductId("prePaid");
+        model.addAttribute("subscriptionDetail",subscriptionDetail);
         return "prePaid";
     }
 
@@ -50,12 +54,15 @@ public class PrePaidController {
         return "prePaid";
     }
 
-    @GetMapping("/chooseplan/postPaid")
+    @GetMapping("/newConnection/postPaid")
     public String showPostPaidPlans(Model model){
         List<PostPaid> threeG = postPaidRepository.findByType("3G");
         List<PostPaid> fourG = postPaidRepository.findByType("4G");
         model.addAttribute("threeG",threeG);
         model.addAttribute("fourG",fourG);
+        SubscriptionDetail subscriptionDetail = new SubscriptionDetail();
+        subscriptionDetail.setProductId("postPaid");
+        model.addAttribute("subscriptionDetail",subscriptionDetail);
         return "postPaid";
     }
 
@@ -69,12 +76,15 @@ public class PrePaidController {
     }
 
 
-    @GetMapping("/chooseplan/dongle")
+    @GetMapping("/newConnection/dongle")
     public String showDonglePlans(Model model){
         List<Dongle> threeG = dongleRepository.findByType("3G");
         List<Dongle> fourG = dongleRepository.findByType("4G");
         model.addAttribute("threeG",threeG);
         model.addAttribute("fourG",fourG);
+        SubscriptionDetail subscriptionDetail = new SubscriptionDetail();
+        subscriptionDetail.setProductId("dongle");
+        model.addAttribute("subscriptionDetail",subscriptionDetail);
         return "dongle";
     }
 
@@ -87,7 +97,7 @@ public class PrePaidController {
         return "dongle";
     }
 
-    @RequestMapping(value = "/chooseplan/prePaid/{planId}", method=RequestMethod.GET)
+    @RequestMapping(value = "/newConnection/prePaid/{planId}", method=RequestMethod.GET)
     public String updateSubscriptionPostPaid(@PathVariable String planId,
                                              @ModelAttribute SubscriptionDetail subscriptionDetail, Model model){
         subscriptionDetail.setPlandId(planId);
@@ -95,14 +105,14 @@ public class PrePaidController {
         return "redirect:/payment";
     }
 
-    @RequestMapping(value = "/chooseplan/postPaid/{planId}", method= RequestMethod.GET)
+    @RequestMapping(value = "/newConnection/postPaid/{planId}", method= RequestMethod.GET)
     public String updateSubscriptionPrePaid(@PathVariable String planId, @ModelAttribute SubscriptionDetail subscriptionDetail,Model model){
         subscriptionDetail.setPlandId(planId);
         model.addAttribute("subscriptionDetail",subscriptionDetail);
         return "redirect:/payment";
     }
 
-    @RequestMapping(value = "/chooseplan/dongle/{planId}", method= RequestMethod.GET)
+    @RequestMapping(value = "/newConnection/dongle/{planId}", method= RequestMethod.GET)
     public String updateSubscriptionDongle(@PathVariable String planId, @ModelAttribute SubscriptionDetail subscriptionDetail,
                                            Model model){
         subscriptionDetail.setPlandId(planId);

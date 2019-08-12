@@ -38,6 +38,8 @@ public class PlanDetail {
     private Date endDate;
 
     private String amountPaid;
+    private String planType;
+    private String productId;
 
     public String getId() {
         return id;
@@ -117,5 +119,21 @@ public class PlanDetail {
 
     public void setAmountPaid(String amountPaid) {
         this.amountPaid = amountPaid;
+    }
+
+    public String getPlanType() {
+        return planType;
+    }
+
+    public void setPlanType(String planType) {
+        this.planType = planType;
+    }
+
+    public String getProductId() {
+        return productId;
+    }
+
+    public void setProductId(String productId) {
+        this.productId = productId;
     }
 }

@@ -25,6 +25,9 @@ public class SubscriptionDetail {
     @NotNull
     private Payment payment;
 
+    @NotNull
+    private String planPrice;
+
     public String getUserId() {
         return userId;
     }
@@ -57,4 +60,11 @@ public class SubscriptionDetail {
         return payment;
     }
 
+    public String getPlanPrice() {
+        return planPrice;
+    }
+
+    public void setPlanPrice(String planPrice) {
+        this.planPrice = planPrice;
+    }
 }

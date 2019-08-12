@@ -25,6 +25,7 @@ public class PaymentController {
     private PostPaidRepository postPaidRepository;
     private PlanDetailRepository planDetailRepository;
     private DongleRepository dongleRepository;
+    private UserCredentialRepository userCredentialRepository;
 
     @Autowired
     public PaymentController(PaymentRepository paymentRepository,
@@ -32,13 +33,15 @@ public class PaymentController {
                              PrePaidRepository prePaidRepository,
                              PostPaidRepository postPaidRepository,
                              PlanDetailRepository planDetailRepository,
-                             DongleRepository dongleRepository) {
+                             DongleRepository dongleRepository,
+                             UserCredentialRepository userCredentialRepository) {
         this.paymentRepository = paymentRepository;
         this.subscriptionDetailRepository = subscriptionDetailRepository;
         this.prePaidRepository = prePaidRepository;
         this.postPaidRepository = postPaidRepository;
         this.planDetailRepository = planDetailRepository;
         this.dongleRepository = dongleRepository;
+        this.userCredentialRepository = userCredentialRepository;
     }
 
     @ModelAttribute(name = "payment")
@@ -55,18 +58,21 @@ public class PaymentController {
 
     @PostMapping
     public String processPaymentFrom(@Valid Payment payment, Errors errors,
-                                     @ModelAttribute SubscriptionDetail subscriptionDetail, Model model) {
+                                     @ModelAttribute SubscriptionDetail subscriptionDetail, Model model,
+                                     @ModelAttribute Login login) {
         if (errors.hasErrors()) {
             return "payment";
         } else {
             paymentRepository.save(payment);
             //model.addAttribute("hello", payment);
             subscriptionDetail.setPayment(payment);
-            subscriptionDetailRepository.save(subscriptionDetail);
+            //subscriptionDetailRepository.save(subscriptionDetail);
+            subscriptionDetail.setUserId(login.getId());
             PlanDetail planDetail = new PlanDetail();
-            planDetail.setUserId(subscriptionDetail.getUserId());
-            planDetail.setPlanId(subscriptionDetail.getPlandId());
-            planDetail.setStartDate(subscriptionDetail.getPayment().getPaymentDate());
+            planDetail.setUserId(subscriptionDetail.getUserId()); //user id set
+            planDetail.setPlanId(subscriptionDetail.getPlandId()); //plan id set
+            planDetail.setProductId(subscriptionDetail.getProductId()); // product id set
+            planDetail.setStartDate(subscriptionDetail.getPayment().getPaymentDate()); // plan start date set
             Calendar calendar = Calendar.getInstance();
             calendar.setTime(subscriptionDetail.getPayment().getPaymentDate());
 //            calendar.add(Calendar.DAY_OF_MONTH,28);
@@ -75,26 +81,46 @@ public class PaymentController {
             String validity;
             String data;
             String amountPaid;
+            String planType;
+            Optional<UserCredential>  userCredential = userCredentialRepository.findById(login.getId());
+
             ////Getting plan validity
             if(productId.equals("prePaid")){
                 Optional<PrePaid> prePaid = prePaidRepository.findById(subscriptionDetail.getPlandId());
+//                Optional<UserCredential>  userCredential = userCredentialRepository.findById(login.getId());
+                userCredential.get().setPrePaidPlan("prePaid");
+                userCredential.get().setPrePaidPlanId(planDetail.getId());
+//                userCredentialRepository.save(userCredential.get());
                 validity = prePaid.get().getValidity();
                 data = prePaid.get().getBenefits();
                 amountPaid = prePaid.get().getPreMoney();
+                planType = prePaid.get().getType();
             }else if(productId.equals("postPaid")){
                 Optional<PostPaid> postPaid = postPaidRepository.findById(subscriptionDetail.getPlandId());
                 validity = postPaid.get().getValidity();
                 data = postPaid.get().getBenefits();
                 amountPaid = postPaid.get().getPostMoney();
+                planType = postPaid.get().getType();
+//                Optional<UserCredential>  userCredential = userCredentialRepository.findById(login.getId());
+                userCredential.get().setPostPaidPlan("postPaid");
+
             }else{
                 Optional<Dongle> dongle = dongleRepository.findById(subscriptionDetail.getPlandId());
                 validity = dongle.get().getValidity();
                 data = dongle.get().getBenefits();
                 amountPaid = dongle.get().getDongleMoney();
+                planType = dongle.get().getType();
+//                Optional<UserCredential>  userCredential = userCredentialRepository.findById(login.getId());
+                userCredential.get().setDonglePlan("dongle");
+                userCredential.get().setDonglePlanId(planDetail.getId());
+//                userCredentialRepository.save(userCredential.get());
             }
 
-            planDetail.setValidity(validity);
-            planDetail.setAmountPaid(amountPaid);
+
+            planDetail.setValidity(validity); // validity set
+            planDetail.setAmountPaid(amountPaid); // amountPaid set
+            planDetail.setPlanType(planType); // planType set
+            subscriptionDetail.setPlanPrice(amountPaid); // plan price set
             char[] validityChar = validity.toCharArray();
             int validityNumber = validityChar[0] - '0';
             for(int i=1;i<validityChar.length;i++){
@@ -110,6 +136,17 @@ public class PaymentController {
             planDetail.setRemainingData(data);
             planDetail.setGeneratedNumber("9874563215");
             planDetailRepository.save(planDetail);
+            subscriptionDetailRepository.save(subscriptionDetail);
+            if(productId.equals("prePaid")){
+                userCredential.get().setPrePaidPlanId(planDetail.getId());
+                userCredentialRepository.save(userCredential.get());
+            }else if(productId.equals("postPaid")){
+                userCredential.get().setPostPaidPlanId(planDetail.getId());
+                userCredentialRepository.save(userCredential.get());
+            }else{
+                userCredential.get().setDonglePlanId(planDetail.getId());
+                userCredentialRepository.save(userCredential.get());
+            }
             return "redirect:/success";
         }
     }

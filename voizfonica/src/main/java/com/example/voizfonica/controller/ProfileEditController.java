@@ -62,7 +62,7 @@ public class ProfileEditController {
         user1.setEmailId(userCredential.getEmailId());
         user1.setPanNumber(user.get().getPanNumber());
         user1.setPassword(userCredential.getPassword());
-        user1.setRequiredPlan(user.get().getRequiredPlan());
+        //user1.setRequiredPlan(user.get().getRequiredPlan());
         userCredentialRepository.save(user1);
         return "redirect:/profile";
 

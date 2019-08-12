@@ -70,7 +70,7 @@ public class UnsubscribeController {
         SubscriptionDetail plan1=subscriptionDetail1.get(0);
         plan1.setPlandId("Not Available");
         plan1.setProductId("Not Plans selected");
-        user.setRequiredPlan("Not Plans Selected");
+       // user.setRequiredPlan("Not Plans Selected");
         subscriptionDetailRepository.save(plan1);
         userCredentialRepository.save(user);
 

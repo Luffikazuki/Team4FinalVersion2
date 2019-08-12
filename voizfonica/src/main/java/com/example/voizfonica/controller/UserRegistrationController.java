@@ -15,7 +15,6 @@ import java.util.List;
 
 @Controller
 @RequestMapping("/customerRegister")
-@SessionAttributes({"subscriptionDetail","login"})
 public class UserRegistrationController {
     private UserCredentialRepository userCredentialRepository;
 
@@ -30,10 +29,7 @@ public class UserRegistrationController {
         return new UserCredential();
     }
 
-    @ModelAttribute(name ="login")
-    public Login login(){
-        return new Login();
-    }
+
 
     @GetMapping
     public String showRegistrationForm(Model model){
@@ -43,28 +39,29 @@ public class UserRegistrationController {
     }
 
     @PostMapping
-    public String processRegistrationFrom(@Valid UserCredential userCredential, Errors errors, Model model,
-                                          @ModelAttribute Login login){
+    public String processRegistrationFrom(@Valid UserCredential userCredential, Errors errors,Model model){
         if(errors.hasErrors()){
             return "customerRegister";
         }else{
+            List<UserCredential> userCredentials = userCredentialRepository.findByEmailId(userCredential.getEmailId());
 
-            userCredentialRepository.save(userCredential);
-            SubscriptionDetail subscriptionDetail = new SubscriptionDetail();
-            List<UserCredential> user1 = userCredentialRepository.findByEmailIdAndPassword(userCredential.getEmailId(),
-                    userCredential.getPassword());
-            String userId = user1.get(0).getId();
-            String productId = user1.get(0).getRequiredPlan();
-            ///////Persisting the userId and productId in subscriptionDetail
-            subscriptionDetail.setUserId(userId);
-            subscriptionDetail.setProductId(productId);
-            model.addAttribute("subscriptionDetail",subscriptionDetail);
-            //Passing the login attributes
-            login.setUserName(user1.get(0).getUserName());
-            login.setId(userId);
-            login.setPassword(null);
-            login.setEmailId(null);
-            return "redirect:/chooseplan/"+ productId;
+            if(userCredentials.isEmpty()) {
+                userCredential.setPrePaidPlan("null");
+                userCredential.setPostPaidPlan("null");
+                userCredential.setDonglePlan("null");
+                userCredential.setPrePaidPlanId("null");
+                userCredential.setPostPaidPlanId("null");
+                userCredential.setDonglePlanId("null");
+
+                userCredentialRepository.save(userCredential);
+
+
+                model.addAttribute("registrationSuccess", "yes");
+                return "customerRegister";
+            }else{
+                model.addAttribute("mailExist","yes");
+                return "customerRegister";
+            }
         }
     }
 
