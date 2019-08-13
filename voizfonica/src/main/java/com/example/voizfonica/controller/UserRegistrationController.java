@@ -5,6 +5,8 @@ import com.example.voizfonica.model.Login;
 import com.example.voizfonica.model.SubscriptionDetail;
 import com.example.voizfonica.model.UserCredential;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.mail.SimpleMailMessage;
+import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
@@ -18,6 +20,8 @@ import java.util.List;
 public class UserRegistrationController {
     private UserCredentialRepository userCredentialRepository;
 
+    @Autowired
+    private JavaMailSender javaMail;
 
     @Autowired
     public UserRegistrationController(UserCredentialRepository userCredentialRepository){
@@ -57,6 +61,14 @@ public class UserRegistrationController {
 
 
                 model.addAttribute("registrationSuccess", "yes");
+                //Mail is Sent
+                SimpleMailMessage msg=new SimpleMailMessage();
+                msg.setTo(userCredential.getEmailId());
+                msg.setSubject("Welcome to voizfonica");
+                msg.setText("Hi "+userCredential.getUserName()+",\n\nWe welcome you to the world's mightiest network! " +
+                        "Voizfonica.\n\n\nThanks and regards,\nTeam VoizFonica.");
+                javaMail.send(msg);
+                //Mail function ends here
                 return "customerRegister";
             }else{
                 model.addAttribute("mailExist","yes");

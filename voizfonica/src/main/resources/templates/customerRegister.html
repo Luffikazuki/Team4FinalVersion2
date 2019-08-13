@@ -82,18 +82,24 @@
         <h4 align = "center"><font color = "white">Register to join the earth's mightiest telecom </font>  	 </h4>
 
     </div>
+    <br>
+
+    <div align="center" style="width:inherit;height:inherit;float:auto;">
+                <span class="badge badge-success"  th:if="${registrationSuccess} == 'yes'">
+                    Successfully registered &nbsp;
+                <a  href="login" class="btn btn-dark">Click here to login</a>
+                </span><br>
+
+    </div>
+
+
 
     <div class="card-body" >
 
 
         <form method="post" th:object="${userCredential}" >
 
-            <div class="formstyle">
-                <span class="badge badge-info" th:if="${registrationSuccess} == 'yes'">
-                    Successfully registered &nbsp;
-                    <a href="login" class="btn btn-dark">Click here</a>
-                </span>
-            </div>
+
             <div class="formstyle">
                 <span class="badge badge-danger" th:if="${mailExist} == 'yes'">
                     Email already exist!

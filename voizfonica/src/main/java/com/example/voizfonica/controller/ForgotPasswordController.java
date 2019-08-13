@@ -74,4 +74,29 @@ public class ForgotPasswordController {
             return "forgotPasswordSecurity";
         }
     }
+
+    @GetMapping("confirmPassword")
+    public String getNewPassword(Verification verification, Model model){
+        if(verification1.equals(verification2)){
+            model.addAttribute("resetPassword",new Verification());
+            return "forgotPasswordReset";
+        }else{
+            return "login";
+        }
+    }
+
+    @PostMapping("confirmPassword")
+    public String processNewPassword(Verification verification, Model model){
+        List<UserCredential> userCredentials = userCredentialRepository.findByEmailId(mailId);
+        userCredentials.get(0).setPassword(verification.getVerificationAnswer());
+        userCredentialRepository.save(userCredentials.get(0));
+        return "redirect:/resetSuccessful";
+    }
+
+    @GetMapping("resetSuccessful")
+    public String showSuccess(Model model){
+        model.addAttribute("reset","yes");
+        model.addAttribute("resetPassword",new Verification());
+        return "forgotPasswordReset";
+    }
 }

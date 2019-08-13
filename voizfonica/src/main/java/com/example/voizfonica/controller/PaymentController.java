@@ -134,7 +134,10 @@ public class PaymentController {
             planDetail.setEndDate(calendar.getTime());
             planDetail.setData(data);
             planDetail.setRemainingData(data);
-            planDetail.setGeneratedNumber("9874563215");
+            // creating a randam 10 digit mobile number;
+            long mobileNumber = (long)((Math.random() * 100000000) + 7980000000L);
+            String stringMobileNumber = Long.toString(mobileNumber);
+            planDetail.setGeneratedNumber(stringMobileNumber);
             planDetailRepository.save(planDetail);
             subscriptionDetailRepository.save(subscriptionDetail);
             if(productId.equals("prePaid")){
@@ -147,7 +150,9 @@ public class PaymentController {
                 userCredential.get().setDonglePlanId(planDetail.getId());
                 userCredentialRepository.save(userCredential.get());
             }
-            return "redirect:/success";
+            model.addAttribute("paymentMade","yes");
+            return "payment";
+            //return "redirect:/success";
         }
     }
 }
