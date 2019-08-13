@@ -27,10 +27,4 @@ public class MNPDomain {
     @Size (max=10)
     private String portKey;
 
-    //private Date submitOn;
-
-    //@PrePersist
-    //void submitOn() {
-        //this.submitOn = new Date();
-    //}
 }

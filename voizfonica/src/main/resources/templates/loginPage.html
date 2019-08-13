@@ -11,6 +11,7 @@
             integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
     <title>Login | VoizFonica</title>
     <link rel="stylesheet" type="text/css" th:href="@{/css/login.css}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 
 <body> <!--Start of body-->
@@ -79,8 +80,10 @@
         <div class="card">
             <div class="card-header">
                 <h2 align = "center"><b> Welcome!  </b> </h2>
+                <br>
+
+
             </div>
-            <br>
             <div class="card-body">
                 <form method="post"  th:object="${login}">
                     <div >
@@ -92,6 +95,7 @@
                             <span class="input-group-text"><i class="fas fa-user"></i></span>
                         </div>
                         <input required type="email" class="form-control" placeholder="Email" th:field="*{emailId}"/>
+                       <!-- <i class="fa fa-envelope" style="font-size:20px; visibility:hidden;"></i>-->
                     </div>
 
                     <div >
@@ -103,8 +107,11 @@
                         <div class="input-group-prepend">
                             <span class="input-group-text"><i class="fas fa-key"></i></span>
                         </div>
-                        <input required type="password" class="form-control" placeholder="Password" th:field="*{password}"/>
+                        <input required type="password" class="form-control" placeholder="Password" th:field="*{password}"
+                               id="password"/>&nbsp;
+                        <span class="input-group-text"><i onclick="showPassword();" class="fa fa-eye" style="font-size:15px;"></i> </span>
                     </div>
+
 
 
                     <div class="form-group">
@@ -117,11 +124,16 @@
                     <div class="form-group">
                         <input type="submit" align = "center" value="Login" class="btn float-right login_btn">
                     </div>
+
+
                 </form>
+
                 <div>
-                    <p><a href = "forgotPassword" style = "text-decoration:none"> <strong> Forgot Password? </strong> </a></p>
-                 </div>
+                    <a style="text-decoration: none;" th:href="@{/forgotPassword}"><b>Forgot password?</b></a>
+                </div>
+
             </div>
+
         </div>
     </div>
 </div>
@@ -177,11 +189,14 @@
             <div class="footer-copyright text-center">© 2019 VoizFonica. All Rights Reserved </div>
     </footer>
 
+
+
     <!-- CDN's of js and jquery -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
             integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
             integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script type="text/javascript" th:src="@{/js/loginPage.js}"></script>
 </body> <!--End of body -->
 
 </html>

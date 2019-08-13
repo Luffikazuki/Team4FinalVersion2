@@ -32,7 +32,9 @@
                     <li class="nav-item">
                         <a class="nav-link headerFont" href="/" >Home</a>
                     </li>
-
+                    <li class="nav-item">
+                        <a class="nav-link headerFont" href="billRecharge" >Pay/Recharge</a>
+                    </li>
                     <li class="nav-item">
                         <a class="nav-link headerFont" href="eStore">EStore</a>
                     </li>
@@ -79,6 +81,12 @@
 
             <form class="container-fluid" style="background-color:lightgrey;"  th:object="${payment}" method="post">
                 <br>
+                <div>
+                    <span th:if="${paymentMade} == 'yes'" class="badge badge-info">
+                        Successful
+                        <a href="success">Click here</a>
+                    </span>
+                </div>
 
                 <div class="input-group form-group">
                     <div class="input-group-prepend">
@@ -93,7 +101,7 @@
                 </div>
                 <div class="input-group form-group">
                     <div class="input-group-prepend">
-                        <label style="margin-left:20px;width:150px">Card name</label>
+                        <label style="margin-left:20px;width:150px">Card Name</label>
                         <input autofocus style="margin-left:20px;margin-right:20px;width:150px" class="container-fluid"
                                type="text" th:field="*{name}"/>
                     </div>
@@ -107,7 +115,7 @@
 
                 <div class="input-group form-group">
                     <div class="input-group-prepend">
-                        <label style="margin-left:20px;width:150px">Creditcard number</label>
+                        <label style="margin-left:20px;width:150px">Credit Card Number</label>
                         <input  style="margin-left:20px;margin-right:20px;width:150px" class="container-fluid"
                                 type="text" th:field="*{ccNum}"/>
                     </div>
@@ -120,7 +128,7 @@
 
                 <div class="input-group form-group">
                     <div class="input-group-prepend">
-                        <label style="margin-left:20px;width:150px">Expiry date</label>
+                        <label style="margin-left:20px;width:150px">Expiry Date</label>
                         <input style="margin-left:20px;margin-right:20px;width:150px" class="container-fluid"
                                type="text" th:field="*{ccExpiration}"/>
 
@@ -132,14 +140,15 @@
                 <div class="input-group form-group">
                     <div class="input-group-prepend">
                         <label style="margin-left:20px;width:150px">CVV</label>
-                        <input style="margin-left:20px;margin-right:20px;width:150px" class="container-fluid" type="password" th:field="*{ccCVV}" maxlength="3"/>
+                        <input style="margin-left:20px;margin-right:20px;width:150px" class="container-fluid"
+                               type="text" th:field="*{ccCVV}"/>
 
                     </div>
                     <span class="badge badge-danger" style="display:inline;" th:if="${#fields.hasErrors('ccCVV')}"
                           th:errors="*{ccCVV}">cvv error</span>
                 </div>
 
-                <button class="btn btn-primary" type="submit">Pay</button>
+                <button class="btn btn-primary" type="submit">Make Payment</button>
 
             </form>
         </div>
