@@ -120,7 +120,11 @@ public class PrePaidController {
         return "redirect:/payment";
     }
 
-
+    @RequestMapping(value = "/newConnection/payment", method= RequestMethod.GET)
+    public String buyDongle(@PathVariable String planId, @ModelAttribute SubscriptionDetail subscriptionDetail,
+                                           Model model){
+                return "redirect:/payment";
+    }
 
 
 
