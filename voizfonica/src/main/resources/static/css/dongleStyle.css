@@ -86,6 +86,13 @@
 
 
 /* dongle section styles starts here */
+html,body{
+    background-image: url('https://www.netpremacy.com/wp-content/uploads/2018/09/Background-website-01.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+
+
+}
 
 blink {
     -webkit-animation: 1.25s linear infinite condemned_blink_effect;
