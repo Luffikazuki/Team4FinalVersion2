@@ -60,9 +60,55 @@
                 <p>Select the plan you wish to unsubscribe</p>
 
                 <div class="formstyle" >
-                    <a class="btn btn-primary" th:href="@{unsubscribe/prepaid}"  th:if="${PrePaidPlanUnsubscribe} == 'yes'" >Prepaid</a>
-                    <a class="btn btn-primary" th:href="@{unsubscribe/postpaid}"  th:if="${PostPaidPlanUnsubscribe} == 'yes'" >Postpaid</a>
-                    <a class="btn btn-primary" th:href="@{unsubscribe/dongle}"  th:if="${DonglePlanUnsubscribe} == 'yes'" >Dongle</a>
+                    <!-- Modal -->
+                    <div class="modal fade" id="postModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+
+                                <div class="modal-body">
+                                    <h4 align="center" style="color:red;">Do you really want to unsubscribe ☹</h4>
+                                </div>
+                                <div class="modal-footer">
+                                    <a class="btn btn-primary" th:href="@{unsubscribe/postpaid}"  th:if="${PostPaidPlanUnsubscribe} == 'yes'" >Ok</a>
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Modal -->
+                    <div class="modal fade" id="preModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+
+                                <div class="modal-body">
+                                    <h4 align="center" style="color:red;">Do you really want to unsubscribe ☹</h4>
+                                </div>
+                                <div class="modal-footer">
+                                    <a class="btn btn-primary" th:href="@{unsubscribe/prepaid}"  th:if="${PrePaidPlanUnsubscribe} == 'yes'" >Ok</a>
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Modal -->
+                    <div class="modal fade" id="dongleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+
+                                <div class="modal-body">
+                                    <h4 align="center" style="color:red;">Do you really want to unsubscribe ☹</h4>
+                                </div>
+                                <div class="modal-footer">
+                                    <a class="btn btn-primary" th:href="@{unsubscribe/dongle}"  th:if="${DonglePlanUnsubscribe} == 'yes'" >Ok</a>
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <button class="btn btn-danger" type="button" data-toggle="modal"  th:if="${PostPaidPlanUnsubscribe} == 'yes'" data-target="#postModal">Postpaid</button>
+                    <button class="btn btn-danger" type="button" data-toggle="modal"  th:if="${PrePaidPlanUnsubscribe} == 'yes'" data-target="#preModal">Prepaid</button>
+                    <button class="btn btn-danger" type="button" data-toggle="modal"  th:if="${DonglePlanUnsubscribe} == 'yes'" data-target="#dongleModal">Dongle</button>
+
                 </div>
 
             </div>
