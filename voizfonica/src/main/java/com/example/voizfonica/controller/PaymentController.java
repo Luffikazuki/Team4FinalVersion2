@@ -152,7 +152,7 @@ public class PaymentController {
             }
             model.addAttribute("paymentMade","yes");
             return "payment";
-            //return "redirect:/success";
+
         }
     }
 }

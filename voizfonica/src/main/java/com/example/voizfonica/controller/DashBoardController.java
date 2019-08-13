@@ -11,6 +11,13 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
 import javax.swing.text.html.Option;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.time.Duration;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -55,6 +62,7 @@ public class DashBoardController {
                     model.addAttribute("hasPrePaidPlan","yes");
                     Optional<PlanDetail> planDetail = planDetailRepository.findById(userCredential.get().getPrePaidPlanId());
                     model.addAttribute("prePaid",planDetail.get());
+                    model.addAttribute("canApplyPrepaidRecharge",getValidity(planDetail.get()));
                 }else{
                     model.addAttribute("hasPrePaidPlan","no");
                 }
@@ -63,6 +71,7 @@ public class DashBoardController {
                     model.addAttribute("hasPostPaidPlan","yes");
                     Optional<PlanDetail> planDetail = planDetailRepository.findById(userCredential.get().getPostPaidPlanId());
                     model.addAttribute("postPaid",planDetail.get());
+                    model.addAttribute("canApplyPostpaidRecharge",getValidity(planDetail.get()));
                 }else{
                     model.addAttribute("hasPostPaidPlan","no");
                 }
@@ -71,6 +80,7 @@ public class DashBoardController {
                     model.addAttribute("hasDonglePlan","yes");
                     Optional<PlanDetail> planDetail = planDetailRepository.findById(userCredential.get().getDonglePlanId());
                     model.addAttribute("dongle",planDetail.get());
+                    model.addAttribute("canApplyDongleRecharge",getValidity(planDetail.get()));
                 }else{
                     model.addAttribute("hasDonglePlan","no");
                 }
@@ -78,6 +88,25 @@ public class DashBoardController {
                 return "/dashboard";
             }
         }
+    }
+    public String getValidity(PlanDetail planDetail)
+    {
+        Date startDate=planDetail.getStartDate();
+        Date endDate=planDetail.getEndDate();
+        Date currDate= Calendar.getInstance().getTime();
+        long validity=endDate.getTime() - startDate.getTime();
+        long validityDays = validity / (24 * 60 * 60 * 1000);
+        long completed=currDate.getTime()-startDate.getTime();
+        long completedDays=completed/ (24 * 60 * 60 * 1000);
+        if (validityDays-completedDays <= 5)
+        {
+            return "applyRecharge";
+        }
+        else
+        {
+            return "notApply";
+        }
+
     }
 
 }
