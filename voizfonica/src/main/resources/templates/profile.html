@@ -63,11 +63,8 @@
                                 <h3 th:each="u: ${user}" th:text="${u.userName}" th:name="userName" th:id="userName" style="display:inline-block">!
                                 </h3>
                                 <br>
-                                <div class="alert alert-danger alert-dismissable">
-                                    <a class="panel-close close" data-dismiss="alert">×</a>
-                                    <i class="fa fa-coffee"></i>
-                                    You have unsubscribed your <b> Prepaid </b> plan.
-                                </div>
+
+
                                 <hr class="my-20"><br>
                                 <div th:each="u: ${user}">
                                     <i class="glyphicon glyphicon-user"></i> &nbsp; Name:&nbsp;&nbsp;

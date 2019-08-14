@@ -90,6 +90,7 @@ public class UnsubscribeController {
         login.setEmailId(null);
         login.setPassword(null);
         model.addAttribute("login",login);
+
         return "redirect:/profile";
 
     }
@@ -110,6 +111,7 @@ public class UnsubscribeController {
         login.setEmailId(null);
         login.setPassword(null);
         model.addAttribute("login",login);
+
         return "redirect:/profile";
 
     }
@@ -151,5 +153,6 @@ public class UnsubscribeController {
         planHistory.setValidity(plan.getValidity());
         planDetailHistoryRepository.save(planHistory);
     }
+
 
 }

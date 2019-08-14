@@ -16,7 +16,7 @@ import java.util.Optional;
 
 @Controller
 @SessionAttributes("login")
-@RequestMapping("profile")
+@RequestMapping("/profile")
 public class ProfileController {
 
     @ModelAttribute(name ="login")
