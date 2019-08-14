@@ -47,7 +47,7 @@
                 <li><a href="unsubscribe">Unsubsricbe</a></li>
                 <li><a href="/">Logout</a></li>
 
-            </ul>
+            </ul><br><br><br><br><br><br><br>
         </div>
 
 
@@ -55,6 +55,9 @@
             <div class="well">
                 <h4><b>Hi </b><b th:text="${login.userName}">UserName</b></h4>
                 <hr class="my-4">
+                <h4 style="color:red;" th:if="${canApplyPrepaidRecharge} == 'applyRecharge'" >Your current Prepaid plan will expire soon.. Please recharge to continue our services..</h4>
+                <h4 style="color:red;" th:if="${canApplyPostpaidRecharge} == 'applyRecharge'" >Your current Postpaid plan will expire soon.. Please recharge to continue our services..</h4>
+                <h4 style="color:red;" th:if="${canApplyDongleRecharge} == 'applyRecharge'" >Your current Dongle plan will expire soon.. Please recharge to continue our services..</h4>
                 <!--                <div class="col-sm-18">-->
 
                 <!--                    <a href = "payment"><p><button type="button" class="btn btn-primary">-->
