@@ -43,7 +43,7 @@ public class UserCredential {
     private String donglePlanId;
 
     @NotEmpty(message = "Please provide your address")
-    @Length(max = 100,min = 20)
+    
     private String address;
 
 
